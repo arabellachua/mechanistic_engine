@@ -1,0 +1,69 @@
+model,split,subgroup,value,n,roc_auc,pr_auc,f1,brier,balanced_accuracy
+BiologyOnlyMLP,pre_2015_validation,mapped_status,mapped,28,0.473684,0.35148,0.32,0.260353,0.406433
+BiologyOnlyMLP,pre_2015_validation,mapped_status,unmapped,31,0.57619,0.50524,0.421053,0.23954,0.580952
+BiologyOnlyMLP,pre_2015_validation,modality_group,other_or_unknown,31,0.57619,0.50524,0.421053,0.23954,0.580952
+BiologyOnlyMLP,pre_2015_validation,modality_group,small_molecule,23,0.516667,0.39514,0.315789,0.254571,0.420833
+BiologyOnlyMLP,pre_2015_validation,major_disease,other,59,0.526316,0.37897,0.363636,0.249418,0.498026
+BiologyOnlyMLP,post_2015_test,mapped_status,mapped,213,0.521063,0.390967,0.462264,0.262712,0.507826
+BiologyOnlyMLP,post_2015_test,mapped_status,unmapped,206,0.530411,0.423178,0.424242,0.25132,0.53658
+BiologyOnlyMLP,post_2015_test,modality_group,antibody,93,0.484287,0.337526,0.409639,0.263974,0.51936
+BiologyOnlyMLP,post_2015_test,modality_group,other_or_unknown,206,0.530411,0.423178,0.424242,0.25132,0.53658
+BiologyOnlyMLP,post_2015_test,modality_group,small_molecule,118,0.515433,0.408654,0.492063,0.262939,0.491759
+BiologyOnlyMLP,post_2015_test,major_disease,AML,24,0.476562,0.397385,0.363636,0.260835,0.4375
+BiologyOnlyMLP,post_2015_test,major_disease,NSCLC,27,0.913043,0.559524,0.363636,0.26107,0.695652
+BiologyOnlyMLP,post_2015_test,major_disease,breast cancer,39,0.470899,0.444537,0.565217,0.266958,0.503968
+BiologyOnlyMLP,post_2015_test,major_disease,cancer NOS,85,0.624717,0.576534,0.582278,0.239982,0.615363
+BiologyOnlyMLP,post_2015_test,major_disease,lymphoma,29,0.470588,0.411319,0.551724,0.257748,0.568627
+BiologyOnlyMLP,post_2015_test,major_disease,other,195,0.476914,0.32242,0.371257,0.261067,0.476852
+BiologyOnlyMLP,post_2015_test,major_disease,prostate cancer,20,0.333333,0.418421,0.166667,0.261394,0.431373
+EntityOnlyMLP,pre_2015_validation,mapped_status,mapped,28,0.48538,0.37745,0.380952,0.255762,0.511696
+EntityOnlyMLP,pre_2015_validation,mapped_status,unmapped,31,0.745238,0.543663,0.487805,0.260379,0.5
+EntityOnlyMLP,pre_2015_validation,modality_group,other_or_unknown,31,0.745238,0.543663,0.487805,0.260379,0.5
+EntityOnlyMLP,pre_2015_validation,modality_group,small_molecule,23,0.475,0.506976,0.375,0.253307,0.520833
+EntityOnlyMLP,pre_2015_validation,major_disease,other,59,0.6125,0.471791,0.451613,0.258188,0.505921
+EntityOnlyMLP,post_2015_test,mapped_status,mapped,213,0.43314,0.321143,0.38191,0.283087,0.441739
+EntityOnlyMLP,post_2015_test,mapped_status,unmapped,206,0.545076,0.364687,0.485294,0.274735,0.5
+EntityOnlyMLP,post_2015_test,modality_group,antibody,93,0.491302,0.303613,0.418182,0.312412,0.47138
+EntityOnlyMLP,post_2015_test,modality_group,other_or_unknown,206,0.545076,0.364687,0.485294,0.274735,0.5
+EntityOnlyMLP,post_2015_test,modality_group,small_molecule,118,0.474228,0.389522,0.325581,0.260309,0.47288
+EntityOnlyMLP,post_2015_test,major_disease,AML,24,0.453125,0.330771,0.4,0.268691,0.4375
+EntityOnlyMLP,post_2015_test,major_disease,NSCLC,27,0.288043,0.113916,0.153846,0.295551,0.315217
+EntityOnlyMLP,post_2015_test,major_disease,breast cancer,39,0.501323,0.497227,0.533333,0.251134,0.47619
+EntityOnlyMLP,post_2015_test,major_disease,cancer NOS,85,0.435941,0.401203,0.537037,0.290596,0.464002
+EntityOnlyMLP,post_2015_test,major_disease,lymphoma,29,0.394608,0.440307,0.4,0.286713,0.397059
+EntityOnlyMLP,post_2015_test,major_disease,other,195,0.511852,0.31894,0.43318,0.273072,0.484259
+EntityOnlyMLP,post_2015_test,major_disease,prostate cancer,20,0.705882,0.230769,0.3,0.320292,0.588235
+DeepMLP,pre_2015_validation,mapped_status,mapped,28,0.415205,0.295898,0.222222,0.332324,0.426901
+DeepMLP,pre_2015_validation,mapped_status,unmapped,31,0.8,0.642835,0.571429,0.225146,0.661905
+DeepMLP,pre_2015_validation,modality_group,other_or_unknown,31,0.8,0.642835,0.571429,0.225146,0.661905
+DeepMLP,pre_2015_validation,modality_group,small_molecule,23,0.45,0.346991,0.285714,0.326734,0.491667
+DeepMLP,pre_2015_validation,major_disease,other,59,0.585526,0.410408,0.434783,0.27601,0.550658
+DeepMLP,post_2015_test,mapped_status,mapped,213,0.486763,0.350433,0.427807,0.353032,0.505797
+DeepMLP,post_2015_test,mapped_status,unmapped,206,0.455952,0.295656,0.431925,0.339386,0.487771
+DeepMLP,post_2015_test,modality_group,antibody,93,0.557239,0.332248,0.47191,0.369406,0.578283
+DeepMLP,post_2015_test,modality_group,other_or_unknown,206,0.455952,0.295656,0.431925,0.339386,0.487771
+DeepMLP,post_2015_test,modality_group,small_molecule,118,0.478274,0.400602,0.378947,0.340754,0.480222
+DeepMLP,post_2015_test,major_disease,AML,24,0.523438,0.433844,0.551724,0.367218,0.59375
+DeepMLP,post_2015_test,major_disease,NSCLC,27,0.608696,0.218703,0.266667,0.56558,0.521739
+DeepMLP,post_2015_test,major_disease,breast cancer,39,0.484127,0.541773,0.375,0.293711,0.47619
+DeepMLP,post_2015_test,major_disease,cancer NOS,85,0.547619,0.458592,0.543689,0.308858,0.49093
+DeepMLP,post_2015_test,major_disease,lymphoma,29,0.446078,0.547382,0.37037,0.362403,0.414216
+DeepMLP,post_2015_test,major_disease,other,195,0.488395,0.322672,0.4,0.324889,0.514815
+DeepMLP,post_2015_test,major_disease,prostate cancer,20,0.627451,0.240741,0.315789,0.472744,0.617647
+TrialTransformer,pre_2015_validation,mapped_status,mapped,28,0.51462,0.420142,0.470588,0.284127,0.616959
+TrialTransformer,pre_2015_validation,mapped_status,unmapped,31,0.833333,0.633049,0.666667,0.170145,0.752381
+TrialTransformer,pre_2015_validation,modality_group,other_or_unknown,31,0.833333,0.633049,0.666667,0.170145,0.752381
+TrialTransformer,pre_2015_validation,modality_group,small_molecule,23,0.483333,0.405457,0.428571,0.316062,0.5875
+TrialTransformer,pre_2015_validation,major_disease,other,59,0.660526,0.488508,0.571429,0.224238,0.688158
+TrialTransformer,post_2015_test,mapped_status,mapped,213,0.42628,0.324963,0.319444,0.374066,0.486667
+TrialTransformer,post_2015_test,mapped_status,unmapped,206,0.457576,0.298236,0.375,0.346955,0.498701
+TrialTransformer,post_2015_test,modality_group,antibody,93,0.486532,0.322874,0.422535,0.345486,0.558081
+TrialTransformer,post_2015_test,modality_group,other_or_unknown,206,0.457576,0.298236,0.375,0.346955,0.498701
+TrialTransformer,post_2015_test,modality_group,small_molecule,118,0.438118,0.373166,0.222222,0.394338,0.465388
+TrialTransformer,post_2015_test,major_disease,AML,24,0.390625,0.391058,0.363636,0.394392,0.4375
+TrialTransformer,post_2015_test,major_disease,NSCLC,27,0.347826,0.14859,0.142857,0.358836,0.429348
+TrialTransformer,post_2015_test,major_disease,breast cancer,39,0.526455,0.577461,0.26087,0.355598,0.535714
+TrialTransformer,post_2015_test,major_disease,cancer NOS,85,0.539683,0.507252,0.493151,0.309,0.556122
+TrialTransformer,post_2015_test,major_disease,lymphoma,29,0.387255,0.431767,0.347826,0.460061,0.460784
+TrialTransformer,post_2015_test,major_disease,other,195,0.440494,0.291133,0.307692,0.349998,0.481481
+TrialTransformer,post_2015_test,major_disease,prostate cancer,20,0.45098,0.17033,0.315789,0.513512,0.617647

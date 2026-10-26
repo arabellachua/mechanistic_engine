@@ -1,0 +1,12 @@
+{
+  "unique_complete_pairs": 335,
+  "zero_total_pairs": 39,
+  "missing_count_values": 0,
+  "subset_counts_valid": true,
+  "cache_replay_network_calls": 0,
+  "resume_appended_attempts": 0,
+  "feature_integration_pairs": 335,
+  "previous_audited_inputs_unchanged": true,
+  "tests_pubmed_and_resume_passed": 10,
+  "full_regression_suite": "Interrupted during existing SHAP/Numba import; not confirmed passing."
+}

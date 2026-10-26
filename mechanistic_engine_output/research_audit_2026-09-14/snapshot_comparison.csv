@@ -1,0 +1,8 @@
+field,common_trials,disagreements
+label_strict,105,46
+label_balanced,105,46
+label_permissive,105,46
+canonical_drug,105,17
+primary_target,105,15
+disease,105,37
+start_year,105,0

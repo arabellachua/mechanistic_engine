@@ -1,0 +1,20 @@
+{
+  "candidate": "protocol_core_c1",
+  "post_hoc": true,
+  "multiple_comparison_corrected": false,
+  "interpretation": "Descriptive only: current fixed predictions, previously used development folds.",
+  "temporal": {
+    "low": -0.043475477041790986,
+    "high": 0.0883354508910262,
+    "valid_resamples": 2000,
+    "requested_resamples": 2000,
+    "cluster": "target_disease_pair"
+  },
+  "unseen_target_disease_pair": {
+    "low": 0.023748316689376825,
+    "high": 0.13382238221794585,
+    "valid_resamples": 2000,
+    "requested_resamples": 2000,
+    "cluster": "target_disease_pair"
+  }
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "mode": "temporal",
+    "fold": 0,
+    "selected": "protocol_only_c10"
+  },
+  {
+    "mode": "temporal",
+    "fold": 1,
+    "selected": "protocol_core_c10"
+  },
+  {
+    "mode": "temporal",
+    "fold": 2,
+    "selected": "protocol_core_c10"
+  },
+  {
+    "mode": "unseen_target_disease_pair",
+    "fold": 0,
+    "selected": "protocol_core_c10"
+  },
+  {
+    "mode": "unseen_target_disease_pair",
+    "fold": 1,
+    "selected": "protocol_core_c10"
+  },
+  {
+    "mode": "unseen_target_disease_pair",
+    "fold": 2,
+    "selected": "core_interactions"
+  }
+]

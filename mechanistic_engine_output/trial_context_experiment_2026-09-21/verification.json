@@ -1,0 +1,8 @@
+{
+  "source_hashes_match": true,
+  "labels_and_trial_order_unchanged": true,
+  "nested_split_isolation": true,
+  "post2015_rows_scored": 0,
+  "n_training": 472,
+  "n_protocol_missing": 3
+}

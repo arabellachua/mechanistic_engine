@@ -15,6 +15,8 @@ v6 IMPROVEMENTS SUMMARY:
 """
 
 import os
+import re
+
 import numpy as np
 import pandas as pd
 from pathlib import Path
@@ -72,7 +74,9 @@ def filter_trials(studies: list[dict]) -> pd.DataFrame:
             "conditions": "|".join(cond_mod.get("conditions", [])),
             "intervention_names": "|".join(drugs),
             "primary_outcome": "|".join(
-                [o.get("measure", "") for o in outcome_mod.get("primaryOutcomes", [])]
+                " ".join(str(o.get(field, "") or "")
+                         for field in ("measure", "description", "timeFrame"))
+                for o in outcome_mod.get("primaryOutcomes", [])
             ),
             "brief_summary": desc_mod.get("briefSummary", ""),
         })
@@ -153,6 +157,29 @@ BIOMARKER_INDICATORS = [
     "overexpression", "biomarker-selected", "biomarker selected",
 ]
 
+
+def classify_endpoint_type(endpoint_text: str) -> str | None:
+    """Classify a primary-outcome description into a coarse endpoint group."""
+    text = str(endpoint_text or "").lower()
+    if not text.strip():
+        return None
+    if any(k in text for k in ["overall survival", "mortality", "time to death"]):
+        return "survival"
+    if re.search(r"\bos\b", text) and not re.search(r"\bdose\b", text):
+        return "survival"
+    if any(k in text for k in [
+        "progression-free", "progression free", "time to progression",
+    ]) or re.search(r"\bpfs\b", text):
+        return "pfs"
+    if any(k in text for k in [
+        "response rate", "objective response", "complete response",
+        "partial response", "disease control rate", "clinical benefit rate",
+    ]) or re.search(r"\borr\b", text):
+        return "response"
+    if any(k in text for k in ["biomarker", "expression", "mutation"]):
+        return "biomarker"
+    return "other"
+
 def normalize_trials(df: pd.DataFrame) -> pd.DataFrame:
     """Map drug names to targets, normalize disease names, extract biomarkers."""
     print("  Normalizing drugs...")
@@ -212,22 +239,7 @@ def normalize_trials(df: pd.DataFrame) -> pd.DataFrame:
     )
 
     # Endpoint type from primary outcome text
-    def classify_endpoint(row):
-        text = str(row.get("primary_outcome", "") or "").lower()
-        if any(k in text for k in ["overall survival", " os ", "death"]):
-            return "survival"
-        elif any(k in text for k in ["progression-free", "pfs", "progression free"]):
-            return "pfs"
-        elif any(k in text for k in ["response rate", "orr", "objective response",
-                                      "complete response", "partial response"]):
-            return "response"
-        elif any(k in text for k in ["biomarker", "expression", "mutation"]):
-            return "biomarker"
-        elif text:
-            return "other"
-        return None
-
-    df["endpoint_type"] = df.apply(classify_endpoint, axis=1)
+    df["endpoint_type"] = df["primary_outcome"].apply(classify_endpoint_type)
     df["endpoint_type_num"] = df["endpoint_type"].map(
         {"survival": 0, "pfs": 1, "response": 2, "biomarker": 3, "other": 4}
     ).fillna(-1)
@@ -347,8 +359,13 @@ def build_modeling_data(df_features: pd.DataFrame, feature_cols: list[str]) -> d
                         else pd.Series([0]*len(test_df), index=test_df.index))
                   for ln in label_defs}
 
-    print(f"  Features: raw={len(feature_sets.get('raw', ({},{}))[ 0].columns)}, "
-          f"composite=7, hybrid={len(feature_sets.get('hybrid', ({},{}))[ 0].columns)}")
+    print(
+        "  Features: "
+        + ", ".join(
+            f"{name}={len(matrices[0].columns)}"
+            for name, matrices in feature_sets.items()
+        )
+    )
 
     return {
         "feature_sets": feature_sets,
@@ -443,23 +460,17 @@ def main():
     # ── STEP 4: Circularity-free labels ──────────────────────────────────────
     print("\n[STEP 4] Building labels (circularity-free — no biology used)...")
     df = build_labels(df)
-    # v9: v8's structured-results + publication enrichment is now the default.
-    # It resolves many of the trials labels.py alone leaves indeterminate
-    # (the "completed+unknown" bucket) using real post-hoc evidence — a
-    # p-value from the trial's own posted results, or its linked publication —
-    # instead of the pre-trial text matching that v9 removed. Set
-    # USE_V8_LABELS=0 to skip it (fast, but leaves that bucket unresolved).
-    # Adds ~15-20 min on a cold cache (2 CT.gov + up to 2 PubMed calls per
-    # trial); fast on re-runs since every call is disk-cached.
-    USE_V8_LABELS = os.getenv("USE_V8_LABELS", "1") == "1"
+    # v8: set USE_V8_LABELS=True to enrich labels with CT.gov results + PubMed
+    # Adds ~30 min first run (cached after). Default False for speed.
+    #TODO: Can we use V8 as default or at least compare it with V8 = TRUE?
+    USE_V8_LABELS = False
     if USE_V8_LABELS:
         try:
             from labels_v8 import build_labels_v8
-            print("  [v8] Enriching labels with structured results and publications...")
+            print("  Enriching labels with structured results + publications...")
             df = build_labels_v8(df, fetch_live=True)
         except Exception as e:
             log.warning(f"v8 label enrichment failed: {e}")
-
     labelable = df[df["label_balanced"] != -1]
     pos = (labelable["label_balanced"] == 1).sum()
     neg = (labelable["label_balanced"] == 0).sum()

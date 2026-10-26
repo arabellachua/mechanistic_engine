@@ -53,6 +53,19 @@ python run_deep_experiments.py
 
 More details are in `docs/deep_learning_branch.md`.
 
+## Refresh PubMed Only
+
+Refresh all mapped target–disease pairs from the saved raw trial corpus without
+replacing existing feature matrices or model reports:
+
+```bash
+python refresh_pubmed.py --as-of 2026-09-14 --output-dir mechanistic_engine_output/pubmed_refresh_2026-09-14
+```
+
+Repeat the same command to resume incomplete queries. See
+`docs/pubmed_refresh.md` for cache validation, missingness, outputs, and the
+remaining limitations of publication-date filtering.
+
 ## Output Files
 
 | File | Description |

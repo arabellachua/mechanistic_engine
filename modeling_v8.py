@@ -120,7 +120,9 @@ def build_stage2_features(df: pd.DataFrame, stage1_probs: np.ndarray,
         stage2_df["is_io_trial"] = 0
 
     # Select stage 2 features
-    s2_cols = ["biology_score_s1"] + [c for c in TRIAL_SPECIFIC_FEATURES if c in stage2_df.columns]
+    s2_cols = list(dict.fromkeys(
+        ["biology_score_s1"] + [c for c in TRIAL_SPECIFIC_FEATURES if c in stage2_df.columns]
+    ))
     return stage2_df[s2_cols].fillna(-1)
 
 

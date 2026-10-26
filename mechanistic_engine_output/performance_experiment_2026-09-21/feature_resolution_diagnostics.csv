@@ -1,0 +1,7 @@
+view,split,trials,distinct_vectors,mixed_label_vectors,trials_in_mixed_label_vectors
+legacy,test,166,86,18,74
+legacy,train,472,171,36,225
+refreshed,test,166,87,18,73
+refreshed,train,472,170,36,225
+biology_core,test,166,49,17,119
+biology_core,train,472,77,24,347

@@ -1,0 +1,12 @@
+dataset,column,n,n_null,n_zero,n_one
+classification_matrix,ot_data_missing,638,0,178,460
+classification_matrix,cbio_data_missing,638,0,0,638
+classification_matrix,biomarker_missing,638,0,604,34
+full_feature_matrix,biomarker_missing,1038,0,339,699
+full_feature_matrix,has_real_ot_data,1038,0,800,238
+full_feature_matrix,has_real_pubmed_data,1038,0,687,351
+full_feature_matrix,has_real_string_data,1038,0,687,351
+full_feature_matrix,has_real_cbio_data,1038,0,825,213
+full_feature_matrix,has_real_chembl_data,1038,0,688,350
+full_feature_matrix,has_real_uniprot_data,1038,0,687,351
+full_feature_matrix,has_real_hpa_data,1038,0,1038,0

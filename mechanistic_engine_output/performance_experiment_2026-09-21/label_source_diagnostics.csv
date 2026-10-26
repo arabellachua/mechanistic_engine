@@ -1,0 +1,14 @@
+split,label_provenance,n,positive
+test,completed+negative_text,2,0
+test,completed+positive_text+approved,11,11
+test,completed+positive_text+results,20,20
+test,completed+results+no_positive_signal,118,0
+test,terminated+efficacy,10,0
+test,terminated+negative_text,4,0
+test,withdrawn+negative,1,0
+train,completed+negative_text,1,0
+train,completed+positive_text+approved,18,18
+train,completed+positive_text+results,74,74
+train,completed+results+no_positive_signal,361,0
+train,terminated+efficacy,13,0
+train,terminated+negative_text,5,0

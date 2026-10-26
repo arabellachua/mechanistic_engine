@@ -1,0 +1,13 @@
+{
+  "raw_trials": 5000,
+  "filtered_trials": 4303,
+  "mapped_trials": 2465,
+  "unknown_target_trials": 1838,
+  "unique_pairs": 335,
+  "attempted_pairs": 335,
+  "complete_pairs": 335,
+  "incomplete_or_unattempted_pairs": 0,
+  "as_of": "2026-09-14",
+  "interrupted": false,
+  "existing_model_outputs_modified": false
+}

@@ -1,0 +1,69 @@
+{
+  "seed": 42,
+  "train_period": "start_year <= 2015",
+  "n_trials": 472,
+  "n_positive": 92,
+  "n_post2015_scored": 0,
+  "excluded_post2015_rows": 166,
+  "excluded_missing_year_rows": 0,
+  "excluded_invalid_label_training_rows": 0,
+  "contexts": {
+    "numeric_reference": [],
+    "target_context": [
+      "primary_target",
+      "disease",
+      "modality"
+    ],
+    "drug_context": [
+      "canonical_drug",
+      "primary_target",
+      "disease",
+      "modality"
+    ],
+    "drug_pair_context": [
+      "canonical_drug",
+      "primary_target",
+      "disease",
+      "modality",
+      "drug_disease_pair"
+    ]
+  },
+  "numeric_columns": [
+    "CDS",
+    "BFS",
+    "TWS",
+    "ot_genetic_association",
+    "ot_somatic_mutation",
+    "ot_rna_expression",
+    "lineage_specificity",
+    "depmap_essential",
+    "depmap_chronos",
+    "cosmic_census_member",
+    "gwas_association_count",
+    "disgenet_score",
+    "tractability",
+    "binding_evidence",
+    "potency_proxy",
+    "tumor_expression",
+    "tumor_specificity",
+    "normal_tissue_burden",
+    "pathway_evidence",
+    "modality_score",
+    "ot_data_missing",
+    "biomarker_missing"
+  ],
+  "ensemble": "fixed 50:50 probability average of numeric_reference and drug_context",
+  "estimator": "LogisticRegression(C=1.0, max_iter=3000); preprocessing fitted on each training fold",
+  "source_sha256": {
+    "mechanistic_engine_output/data/classification_matrix.csv": "fadc18b0bbfd77208388bb4da843c21465a0ff717b16dfa68d61171b0dce0eac",
+    "/Users/tianzechen/Desktop/mechanistic_engine/run_context_experiments.py": "5ee43285dcd12fd716117d04a82f2920dd1415a9860e3e5f9eeb356be311cf7a",
+    "run_performance_experiments.py": "244b52b51332a826117f9197ca030ca57d20f217bcf6ebbfe7cae600d8fe159f"
+  },
+  "limitations": [
+    "Development-only comparisons, including previously used temporal validation windows.",
+    "Grouped folds mix years within the training period; they are not a temporal external validation.",
+    "Unseen pairs may contain previously seen drugs and targets individually.",
+    "Identity effects can reflect label-construction shortcuts rather than mechanistic evidence.",
+    "Labels and database time leakage are unchanged; no main model replacement or claimed test improvement."
+  ]
+}

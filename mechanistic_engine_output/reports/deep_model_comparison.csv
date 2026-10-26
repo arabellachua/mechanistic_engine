@@ -1,0 +1,5 @@
+model,feature_set,label_col,n_train,n_val,n_test,roc_auc,pr_auc,f1,brier,balanced_accuracy,train_auc,validation_auc,test_auc_reversed,train_auc_reversed,validation_auc_reversed,best_epoch,best_val_auc
+BiologyOnlyMLP,composite_plus_embeddings,label_permissive,552,59,419,0.529848,0.38293,0.445623,0.257111,0.524491,0.65589,0.526316,0.470152,0.34411,0.473684,2,0.526316
+EntityOnlyMLP,composite_plus_embeddings,label_permissive,552,59,419,0.477818,0.331433,0.441614,0.278981,0.46232,0.705516,0.6125,0.522182,0.294484,0.3875,4,0.6125
+DeepMLP,composite_plus_embeddings,label_permissive,552,59,419,0.477524,0.326814,0.43,0.346323,0.493813,0.882956,0.585526,0.522476,0.117044,0.414474,21,0.585526
+TrialTransformer,composite_plus_embeddings,label_permissive,552,59,419,0.439385,0.309713,0.348684,0.360737,0.490102,0.926285,0.660526,0.560615,0.073715,0.339474,56,0.660526

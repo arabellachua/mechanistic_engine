@@ -1,0 +1,478 @@
+intervention_names,disease,modality,label,target_is_unknown,appears_in_test_set,frequency_count
+['177Lu-DOTATOC'],glioma,unknown,0,True,True,1
+['18F-fluorofuranylnorprogesterone PET / MRI'],endometrial cancer,unknown,0,True,True,1
+['2-Hydroxyflutamide Depot'],prostate cancer,unknown,1,True,True,1
+['64Cu-PSMA I&T'],prostate cancer,unknown,1,True,True,1
+['68Ga-(HBED-CC)-PSMA'],prostate cancer,unknown,0,True,True,1
+"['AAA602', 'AAA802', 'Gallium (68Ga) gozetotide', 'Piflufolastat (18F)', 'Flotufolastat F 18', '18F-PSMA-1007']",prostate cancer,unknown,0,True,True,1
+['ABI-009'],cancer NOS,unknown,0,True,True,1
+['AK104'],lymphoma,unknown,0,True,True,1
+['AL2846 capsules'],cancer NOS,unknown,1,True,True,1
+"['AMXT1501', 'DFMO']",NSCLC,unknown,0,True,True,1
+"['ASTX660', 'ASTX660', 'ASTX660']",lymphoma,unknown,0,True,True,1
+"['ATG-010 60 mg, orally, twice weekly, each 4 week (28-day) a cycle']",DLBCL,unknown,1,True,True,1
+['ATX-101'],sarcoma,unknown,0,True,True,1
+['AZD2811'],SCLC,unknown,0,True,True,1
+"['Ad26.HPV16', 'Ad26.HPV18', 'MVA.HPV16/18', 'Placebo']",cancer NOS,unknown,0,True,True,1
+"['Alpha-type-1 Polarized Dendritic Cells', 'Celecoxib', 'PD-1 Ligand Inhibitor', 'PD1 Inhibitor', 'Recombinant Interferon Alfa-2b', 'Rintatolimod']",melanoma,unknown,0,True,True,1
+['Amivantamab'],hepatocellular carcinoma,unknown,0,True,True,1
+['Anlotinib Hydrochloride Capsule Combined with Furmonertinib Mesylate'],lung cancer NOS,unknown,1,True,True,1
+['Antiandrogen Therapy'],prostate cancer,unknown,0,True,True,1
+"['Apixaban 2.5 MG Oral Tablet [ELIQUIS]', 'Aspirin 81 mg']",cancer NOS,unknown,1,True,True,1
+['Ascorbic Acid'],cancer NOS,unknown,0,True,True,1
+['Asparaginase'],cancer NOS,unknown,0,True,True,1
+['Aumolertinib'],lung cancer NOS,unknown,0,True,True,1
+"['Azacitidine', 'Daratumumab', 'Dexamethasone']",multiple myeloma,unknown,0,True,True,1
+"['Azacitidine', 'Decitabine', 'Recombinant EphB4-HSA Fusion Protein']",AML,unknown,0,True,True,1
+['BAY94-9343 (Anetumab ravtansine)'],solid tumors,unknown,0,True,True,1
+['BMS-986253'],solid tumors,unknown,0,True,True,1
+['BST-236'],AML,unknown,1,True,True,1
+['Bemarituzumab + Flot regimen'],gastric cancer,unknown,0,True,True,1
+['Bimiralisib'],cancer NOS,unknown,0,True,True,1
+"['Bintrafusp alfa', 'Azacytidine']",melanoma,unknown,0,True,True,1
+"['Bintrafusp alfa', 'N-803', 'BN-Brachyury']",prostate cancer,unknown,0,True,True,1
+['Brequinar/Brequinar + Ribavirin'],AML,unknown,0,True,True,1
+['CABA-201'],cancer NOS,unknown,1,True,True,1
+['CAR-GPC3 T Cells'],hepatocellular carcinoma,unknown,1,True,True,1
+"['CAZ-AVI', 'Vancomycin', 'Linezolid', 'Cefepime', 'Meropenem', 'Piperacillin/tazobactam']",cancer NOS,unknown,0,True,True,1
+"['CD8 reduced peripheral blood cells taken from related donors vaccinated against HPV16', 'Non-myeloablative allogeneic bone marrow transplant from related donors vaccinated against HPV16']",cancer NOS,unknown,1,True,True,1
+"['CDA Inhibitor E7727/Decitabine Combination Agent ASTX727', 'IDH-1 Inhibitor FT-2102']",AML,unknown,0,True,True,1
+"['CPI 613', 'Bendamustine']",lymphoma,unknown,0,True,True,1
+['CR1447'],breast cancer,unknown,0,True,True,1
+['CUDC-907'],thyroid cancer,unknown,0,True,True,1
+"['CV-MG01', 'Placebo']",cancer NOS,unknown,1,True,True,1
+"['CYT107', 'Placebo']",cancer NOS,unknown,0,True,True,1
+"['Cabazitaxel', 'Prednisone']",prostate cancer,unknown,0,True,True,1
+['Calaspargase pegol (S95015)'],cancer NOS,unknown,0,True,True,1
+['Camrelizumab combination with Apatinib'],thyroid cancer,unknown,1,True,True,1
+['Capmatinib'],NSCLC,unknown,0,True,True,1
+['Captopril'],cancer NOS,unknown,0,True,True,1
+['Cerdulatinib'],lymphoma,unknown,0,True,True,1
+['Chloroquine'],glioblastoma,unknown,0,True,True,1
+"['Cilostazol', 'Placebo']",breast cancer,unknown,1,True,True,1
+['Control'],colorectal cancer,unknown,0,True,True,1
+['Copanlisib (BAY806946)'],lymphoma,unknown,1,True,True,1
+['Daratumumab'],lymphoma,unknown,0,True,True,1
+['Defibrotide'],cancer NOS,unknown,0,True,True,1
+['Dordaviprone (ONC201)'],glioma,unknown,0,True,True,1
+['Doxycycline'],pancreatic cancer,unknown,1,True,True,1
+['Dupilumab'],prostate cancer,unknown,0,True,True,1
+['Duvelisib'],lymphoma,unknown,0,True,True,1
+['E7 T Cell Receptor (TCR)'],cancer NOS,unknown,0,True,True,1
+['EBV-specific TCR-T cell with anti-PD1 auto-secreted element'],HNSCC,unknown,1,True,True,1
+['EO4010'],colorectal cancer,unknown,0,True,True,1
+"['Elagolix', 'Placebo']",cancer NOS,unknown,1,True,True,1
+['Elotuzumab'],multiple myeloma,unknown,0,True,True,1
+['Enasidenib'],AML,unknown,0,True,True,1
+"['Eribulin Mesylate', 'Grapiprant']",cancer NOS,unknown,0,True,True,1
+"['Exparel Injectable Product', 'Multi-Drug Cocktail (Ropivicaine, Epinephrine, Ketolorac, Clonidine)']",cancer NOS,unknown,1,True,True,1
+['FCN-159'],cancer NOS,unknown,1,True,True,1
+"['FLT3 Ligand (CDX-301)', 'anti-CD40 antibody (CDX-1140)']",NSCLC,unknown,0,True,True,1
+"['FOLFOX', 'cTACE or DEB-TACE', 'Donafenib']",hepatocellular carcinoma,unknown,0,True,True,1
+['FP-1305 (bexmarilimab)'],cancer NOS,unknown,1,True,True,1
+"['FRα peptide plus Adjuvant (GM-CSF)', 'Adjuvant (GM-CSF) Alone']",ovarian cancer,unknown,0,True,True,1
+"['Fludarabine', 'Vyxeos']",AML,unknown,0,True,True,1
+"['Fruquintinib', 'Tislelizumab']",TNBC,unknown,0,True,True,1
+['Futibatinib'],gastric cancer,unknown,0,True,True,1
+['GDKM-100 injection'],hepatocellular carcinoma,unknown,0,True,True,1
+"['GEN3014', 'Daratumumab']",AML,unknown,0,True,True,1
+"['GPC-100', 'Propranolol', 'G-CSF']",multiple myeloma,unknown,1,True,True,1
+['GS+Toripalimab'],cancer NOS,unknown,1,True,True,1
+"['GSK3326595', '5-Azacitidine']",cancer NOS,unknown,0,True,True,1
+['Ga-68 PSMA-11'],cancer NOS,unknown,1,True,True,1
+"['Glasdegib', 'Decitabine']",AML,unknown,0,True,True,1
+"['HBM9161 Injection (680mg and 340 mg)', 'Placebos', 'HBM9161 Injection (340 mg)']",cancer NOS,unknown,1,True,True,1
+"['HPV9 High formulation', 'HPV9 Medium formulation', 'HPV9 Low formulation', 'Gardasil 9']",cancer NOS,unknown,1,True,True,1
+['HSCT donor leukemia-specific cytotoxic T-cells'],AML,unknown,1,True,True,1
+['Haplo-Cord Transplant'],AML,unknown,0,True,True,1
+['Hydrogen Peroxide'],breast cancer,unknown,1,True,True,1
+['IBI3004'],solid tumors,unknown,0,True,True,1
+['IBI318(Recombinant human anti-PD1/PD-L1 bispecific antibody)'],lymphoma,unknown,1,True,True,1
+['INC280'],lung cancer NOS,unknown,0,True,True,1
+['INVAC-1'],cancer NOS,unknown,0,True,True,1
+['Immuncell-LC'],hepatocellular carcinoma,unknown,1,True,True,1
+['Imvamune'],melanoma,unknown,0,True,True,1
+['Indocyanine Green Solution'],colorectal cancer,unknown,0,True,True,1
+['Indocyanine green'],gastric cancer,unknown,0,True,True,1
+['Infigratinib'],gastric cancer,unknown,0,True,True,1
+['Investigational Agent'],lymphoma,unknown,0,True,True,1
+['Ioflupane I123'],renal cell carcinoma,unknown,0,True,True,1
+"['Ivabradine', 'Placebo Oral Tablet']",lymphoma,unknown,0,True,True,1
+"['JCARH125', 'JCARH125 + anakinra']",multiple myeloma,unknown,1,True,True,1
+['JDQ443'],NSCLC,unknown,0,True,True,1
+"['JNJ-42756493', 'Dexamethasone']",multiple myeloma,unknown,0,True,True,1
+['JNJ-56022473'],AML,unknown,0,True,True,1
+['KRT-232'],SCLC,unknown,0,True,True,1
+['LEE011'],hepatocellular carcinoma,unknown,0,True,True,1
+"['LM-108', 'An Anti-PD-1 Antibody']",solid tumors,unknown,0,True,True,1
+['LUM015'],breast cancer,unknown,0,True,True,1
+['Lucanthone'],NSCLC,unknown,0,True,True,1
+['M281'],cancer NOS,unknown,1,True,True,1
+"['MGD013 monotherapy', 'MGD013 in combination with Brivanib Alaninate']",hepatocellular carcinoma,unknown,0,True,True,1
+"['MK-3475', 'Copanlisib']",lymphoma,unknown,0,True,True,1
+"['Magrolimab', '7+3', 'CPX-351']",AML,unknown,0,True,True,1
+"['Matrix-M1 Adjuvant', 'EBV gp350-Ferritin Vaccine']",cancer NOS,unknown,0,True,True,1
+"['Metformin', 'Clomiphene Citrate']",cancer NOS,unknown,1,True,True,1
+"['Metformin', 'Placebo']",breast cancer,unknown,1,True,True,1
+"['Midostaurin', 'Cytarabine']",AML,unknown,0,True,True,1
+"['Modakafusp Alfa', 'Daratumumab']",multiple myeloma,unknown,0,True,True,1
+['NEOD001'],cancer NOS,unknown,0,True,True,1
+['NFX-179 Gel 1.50%'],cancer NOS,unknown,0,True,True,1
+"['NIR178', 'PDR001']",NSCLC,unknown,0,True,True,1
+['Nanatinostat in combination with valganciclovir'],DLBCL,unknown,0,True,True,1
+"['Navitoclax', 'Vistusertib']",lung cancer NOS,unknown,0,True,True,1
+['Neoadjuvant treatment'],prostate cancer,unknown,0,True,True,1
+"['Nerofe is a first in class derivative of a human hormon-peptide(TCApF), with Cancer suppressive properties.']",TNBC,unknown,0,True,True,1
+['Nicotinamide Riboside'],breast cancer,unknown,0,True,True,1
+['Nirapaib'],cancer NOS,unknown,0,True,True,1
+['OKN-007'],glioblastoma,unknown,0,True,True,1
+"['ONC201', 'Dexamethasone']",multiple myeloma,unknown,0,True,True,1
+"['ONCOS-102', 'Balstilimab']",melanoma,unknown,0,True,True,1
+['ONCT-534'],prostate cancer,unknown,0,True,True,1
+['OTL38 for Injection'],lung cancer NOS,unknown,1,True,True,1
+"['PD-1 antibody', 'Placebos']",hepatocellular carcinoma,unknown,0,True,True,1
+['PDR001'],pancreatic cancer,unknown,1,True,True,1
+['PET/CT with F-Fluciclovine (Axumin)'],cancer NOS,unknown,0,True,True,1
+['PRL3-zumab'],solid tumors,unknown,1,True,True,1
+['PSMA-based 18F-DCFPyL PET tracer for PET/CT exams'],renal cell carcinoma,unknown,1,True,True,1
+"['Pacritinib', 'Placebo']",cancer NOS,unknown,0,True,True,1
+['Pamiparib'],TNBC,unknown,1,True,True,1
+['Pamiparib'],prostate cancer,unknown,0,True,True,1
+['Pancrelipase'],pancreatic cancer,unknown,0,True,True,1
+"['Patidegib Topical Gel, 2%', 'Patidegib Topical Gel, Vehicle']",cancer NOS,unknown,0,True,True,1
+['Pemigatinib'],bladder cancer,unknown,1,True,True,1
+['Pemigatinib'],cholangiocarcinoma,unknown,0,True,True,1
+['Pemigatinib'],solid tumors,unknown,1,True,True,1
+"['Pentoxifylline', 'paracetamol +ketorolac']",breast cancer,unknown,1,True,True,1
+['Pioglitazone 30 Mg Oral Tablet'],cancer NOS,unknown,1,True,True,1
+['Polidocanol Injection'],melanoma,unknown,0,True,True,1
+['Ponatinib'],cancer NOS,unknown,0,True,True,1
+"['Posoleucel (ALVR105)', 'Placebo']",cancer NOS,unknown,0,True,True,1
+"['Pravastatin Pill', 'Placebo Oral Tablet']",hepatocellular carcinoma,unknown,0,True,True,1
+['Preoperative Ketorolac'],NSCLC,unknown,0,True,True,1
+['Promitil'],pancreatic cancer,unknown,0,True,True,1
+['Pyrotinib'],breast cancer,unknown,1,True,True,1
+['Pyruvate (13C)'],prostate cancer,unknown,0,True,True,1
+"['REGN3500', 'REGN3500-Matching Placebo']",cancer NOS,unknown,1,True,True,1
+['RVU120'],AML,unknown,1,True,True,1
+['Rapid Infusion Isatuximab'],multiple myeloma,unknown,0,True,True,1
+"['Reishi mushroom extract', 'Coenzyme Q10', 'Melatonin']",cancer NOS,unknown,0,True,True,1
+['Retifanlimab'],cancer NOS,unknown,1,True,True,1
+['SAR445514'],multiple myeloma,unknown,1,True,True,1
+['SI-B001'],HNSCC,unknown,1,True,True,1
+"['SL-401 7 µg/kg/day', 'SL-401 9 µg/kg/day']",multiple myeloma,unknown,0,True,True,1
+['SNS-062'],CLL,unknown,1,True,True,1
+['SOT102'],pancreatic cancer,unknown,0,True,True,1
+['SYS6045'],solid tumors,unknown,1,True,True,1
+['Standard of Care Second Line Therapy'],pancreatic cancer,unknown,0,True,True,1
+['Statin and Metformin use'],hepatocellular carcinoma,unknown,0,True,True,1
+['Stereotactic biopsy followed by stereotactical photodynamic therapy with 5-aminolevulinic acid'],glioblastoma,unknown,0,True,True,1
+['TJ011133'],AML,unknown,1,True,True,1
+['TK216'],sarcoma,unknown,0,True,True,1
+['TOOKAD Soluble 4 mg/kg'],prostate cancer,unknown,1,True,True,1
+['TP-0903'],CLL,unknown,0,True,True,1
+"['TRK-750/Placebo', 'Placebo/TRK-750']",cancer NOS,unknown,0,True,True,1
+['TRX-221'],NSCLC,unknown,1,True,True,1
+['TTAC-0001'],glioblastoma,unknown,0,True,True,1
+['Tazverik (Tazemetostat)'],lymphoma,unknown,0,True,True,1
+['Thymalfasin'],NSCLC,unknown,0,True,True,1
+"['Tisagenlecleucel', 'lymphodepleting chemotherapy', 'Bridging Therapy']",lymphoma,unknown,1,True,True,1
+['Toposide capsules combined with Anlotinib and Envafolimab group'],cancer NOS,unknown,1,True,True,1
+"['Tranexamic Acid', 'Normal saline']",cancer NOS,unknown,0,True,True,1
+['Triiodothyronine (T3)'],breast cancer,unknown,0,True,True,1
+['Tyrosine Kinase Inhibitor'],cancer NOS,unknown,1,True,True,1
+['Umbralisib'],lymphoma,unknown,1,True,True,1
+['VIO-01'],breast cancer,unknown,0,True,True,1
+['Vinorelbine Oral'],lung cancer NOS,unknown,0,True,True,1
+['Vitamin D3'],breast cancer,unknown,0,True,True,1
+"['W0101 - Cohort A1', 'W0101 - Cohort A2', 'W0101 - Expansion Phase']",solid tumors,unknown,0,True,True,1
+"['XAV-19', 'Placebo']",cancer NOS,unknown,1,True,True,1
+['YH001 + Toripalimab'],NSCLC,unknown,0,True,True,1
+['anti-BCMA CAR-T'],multiple myeloma,unknown,0,True,True,1
+['autologous Tcm cells immunotherapy'],bladder cancer,unknown,0,True,True,1
+['bb2121'],multiple myeloma,unknown,1,True,True,1
+['blinatumomab'],cancer NOS,unknown,0,True,True,1
+"['cardonilizumab', 'LM-302']",cancer NOS,unknown,1,True,True,1
+['donor FMT'],renal cell carcinoma,unknown,1,True,True,1
+"['isatuximab SAR650984', 'cemiplimab REGN2810']",lymphoma,unknown,0,True,True,1
+['itacitinib'],cancer NOS,unknown,1,True,True,1
+"['pemigatinib', 'pemigatinib']",bladder cancer,unknown,1,True,True,1
+['piflufolastat F 18'],renal cell carcinoma,unknown,0,True,True,1
+"['retifanlimab', 'epacadostat', 'pemigatinib', 'INCAGN02385', 'INCAGN02390']",endometrial cancer,unknown,1,True,True,1
+['sotigalimab'],melanoma,unknown,0,True,True,1
+"['tafasitamab', 'parsaclisib']",CLL,unknown,1,True,True,1
+['trifluridine/tipiracil'],breast cancer,unknown,1,True,True,1
+['vancomycin'],hepatocellular carcinoma,unknown,0,True,True,1
+"['vidutolimod', 'cemiplimab']",NSCLC,unknown,0,True,True,1
+['zafirlukast'],breast cancer,unknown,0,True,True,1
+['Antineoplaston therapy (Atengenal + Astugenal)'],cancer NOS,unknown,0,True,False,2
+"[""Hodgkin's antigens-GM-CSF-expressing cell vaccine""]",lymphoma,unknown,0,True,False,1
+['0.04% Mechlorethamine gel'],cancer NOS,unknown,1,True,False,1
+"['1% lignocaine', '2% lignocaine']",lung cancer NOS,unknown,1,True,False,1
+['18F-FLT'],lymphoma,unknown,1,True,False,1
+"['2 vaccine injections in 1 limb', '2 vaccine injections in distinct limbs', '2 ""vaccine injections"" in distinct limbs']",melanoma,unknown,1,True,False,1
+"['20% betulinic acid ointment', 'BA']",cancer NOS,unknown,0,True,False,1
+['25 mg Proellex'],cancer NOS,unknown,1,True,False,1
+['3F8 and 13-cis-retinoic acid'],cancer NOS,unknown,1,True,False,1
+['5FU/Leucovorin'],cancer NOS,unknown,0,True,False,1
+"['851B', '851B', '851B', '851B', '851B', '851B', '851B', '851B', '851B', '851B', '851B']",cancer NOS,unknown,1,True,False,1
+['90Y-DOTA-hLL2'],lymphoma,unknown,0,True,False,1
+['90Y-Ibritumomab Tiuxetan'],DLBCL,unknown,0,True,False,1
+"['ABVD', 'BEACOPP']",lymphoma,unknown,1,True,False,1
+['ADI-PEG 20 plus modified FOLFOX6'],colorectal cancer,unknown,0,True,False,1
+"['AEB071', 'MEK162']",melanoma,unknown,0,True,False,1
+['AGI-101H Vaccine'],melanoma,unknown,0,True,False,1
+"['ALD518', 'ALD518', 'ALD518', 'Infusion of 0.9% Saline without ALD518']",NSCLC,unknown,1,True,False,1
+['ALT-801'],multiple myeloma,unknown,0,True,False,1
+"['ARQ 197', 'Placebo']",hepatocellular carcinoma,unknown,0,True,False,1
+['AS101'],cancer NOS,unknown,0,True,False,1
+['ASP8273'],NSCLC,unknown,0,True,False,1
+['AT9283'],AML,unknown,0,True,False,1
+['ATN-161'],renal cell carcinoma,unknown,0,True,False,1
+"['AZD2281', 'AZD5363', 'AZD1775', 'AZD6738']",cancer NOS,unknown,0,True,False,1
+"['Ad-RTS-hIL-12', 'Veledimex']",breast cancer,unknown,0,True,False,1
+['Adalimumab'],cancer NOS,unknown,0,True,False,1
+['Akt/ERK Inhibitor ONC201'],gastric cancer,unknown,0,True,False,1
+"['AlloStim-8', 'AlloStim-8', 'AlloStim-8', 'AlloStim-8']",lymphoma,unknown,0,True,False,1
+['Amifostine'],colorectal cancer,unknown,0,True,False,1
+['Amphinex induced PCI of bleomycin'],HNSCC,unknown,1,True,False,1
+['Amrubicin'],bladder cancer,unknown,0,True,False,1
+['Antineoplaston therapy (Atengenal + Astugenal)'],HNSCC,unknown,0,True,False,1
+['Antineoplaston therapy (Atengenal + Astugenal)'],SCLC,unknown,0,True,False,1
+['Antineoplaston therapy (Atengenal + Astugenal)'],lung cancer NOS,unknown,0,True,False,1
+['Antineoplaston therapy (Atengenal + Astugenal)'],pancreatic cancer,unknown,0,True,False,1
+"['Arm A', 'Arm B']",colorectal cancer,unknown,0,True,False,1
+"['Arsenic Trioxide (ATO)', 'Ascorbic Acid']",cancer NOS,unknown,0,True,False,1
+"['Aspirin', 'Placebo']",glioblastoma,unknown,0,True,False,1
+['BG00002 (natalizumab)'],multiple myeloma,unknown,0,True,False,1
+['BIBF 1120'],breast cancer,unknown,0,True,False,1
+['BIBF1120'],SCLC,unknown,0,True,False,1
+['BIBW 2992'],lung cancer NOS,unknown,0,True,False,1
+['BIND-014'],prostate cancer,unknown,1,True,False,1
+['BKM120'],endometrial cancer,unknown,0,True,False,1
+['BMS-663513'],cancer NOS,unknown,0,True,False,1
+['Bemiparin'],cancer NOS,unknown,0,True,False,1
+"['Bendamustine hydrochloride', 'Ofatumumab']",lymphoma,unknown,1,True,False,1
+['Bendamustine'],AML,unknown,0,True,False,1
+['Bortezomid (VELCADE®)'],NSCLC,unknown,0,True,False,1
+"['Bupivacaine', 'Botulinum Toxins', 'Analgesics']",cancer NOS,unknown,0,True,False,1
+"['CLT-008', 'G-CSF']",AML,unknown,1,True,False,1
+"['CT-011', 'FOLFOX']",colorectal cancer,unknown,1,True,False,1
+['CT-011'],melanoma,unknown,1,True,False,1
+['CTL019 T-cells'],cancer NOS,unknown,1,True,False,1
+['CV9103'],prostate cancer,unknown,1,True,False,1
+"['Cabazitaxel', 'Prednisone', 'Granulocyte colony-stimulating factor (G-CSF)']",prostate cancer,unknown,0,True,False,1
+['Cabazitaxel'],cancer NOS,unknown,0,True,False,1
+['Caloric Management Protocol'],cancer NOS,unknown,0,True,False,1
+['Catumaxomab (Removab)'],gastric cancer,unknown,1,True,False,1
+['Cdc7-inhibitor'],cancer NOS,unknown,0,True,False,1
+['Celecoxib'],cancer NOS,unknown,0,True,False,1
+['Cidofovir'],cancer NOS,unknown,1,True,False,1
+"['Clarithromycin', 'Placebo']",lung cancer NOS,unknown,0,True,False,1
+['Clofarabine'],multiple myeloma,unknown,0,True,False,1
+['Conditioning Regimen & GVHD Prophylaxis'],lymphoma,unknown,0,True,False,1
+['Copanlisib (BAY80-6946)'],lymphoma,unknown,0,True,False,1
+"['Cytarabine', 'Idarubicin', 'Omacetaxine mepesuccinate', 'Omacetaxine mepesuccinate', 'Omacetaxine mepesuccinate', 'Omacetaxine mepesuccinate']",AML,unknown,0,True,False,1
+"['Cytarabine', 'Intrathecal Triples', 'HPC-A']",AML,unknown,0,True,False,1
+"['Cytoxan', 'Nipent', 'Rituxan']",lymphoma,unknown,1,True,False,1
+['DI-Leu16-IL2'],lymphoma,unknown,0,True,False,1
+"['Daunorubicin', 'Cytarabine', 'Eltrombopag', 'Placebo']",cancer NOS,unknown,1,True,False,1
+['Decitabine'],cancer NOS,unknown,1,True,False,1
+['Degarelix'],prostate cancer,unknown,1,True,False,1
+['Denileukin diftitox (Ontak)'],cancer NOS,unknown,1,True,False,1
+['Depsipeptide'],melanoma,unknown,0,True,False,1
+['Docosahexaenoic Acid'],breast cancer,unknown,0,True,False,1
+['Dovitinib (TKI258)'],cancer NOS,unknown,1,True,False,1
+['Dovitinib'],bladder cancer,unknown,0,True,False,1
+['Dovitinib'],cancer NOS,unknown,0,True,False,1
+['E7070'],colorectal cancer,unknown,1,True,False,1
+['EACA'],cancer NOS,unknown,0,True,False,1
+['Elacytarabine plus idarubicin'],AML,unknown,1,True,False,1
+"['Entospletinib', 'Vincristine', 'Dexamethasone', 'CNS Prophylaxis']",cancer NOS,unknown,1,True,False,1
+['Eribulin'],breast cancer,unknown,0,True,False,1
+['Estradiol'],breast cancer,unknown,0,True,False,1
+"['Etanercept', 'Placebo']",cancer NOS,unknown,1,True,False,1
+['Ex vivo expansion of cord blood'],AML,unknown,0,True,False,1
+['FOLFOX'],cancer NOS,unknown,0,True,False,1
+['Ferinject (Ferric Carboxymaltose)'],pancreatic cancer,unknown,1,True,False,1
+['Fludarabine'],CLL,unknown,0,True,False,1
+['Forodesine'],lymphoma,unknown,0,True,False,1
+['G-202'],glioblastoma,unknown,1,True,False,1
+['G-202'],prostate cancer,unknown,0,True,False,1
+['G17DT'],pancreatic cancer,unknown,1,True,False,1
+['GS-1101'],CLL,unknown,0,True,False,1
+['GTx-024'],TNBC,unknown,0,True,False,1
+"['Gallium-68-DOTATATE PET/CT (index test)', 'Indium-111-Octreoscan (standard test)']",pancreatic cancer,unknown,0,True,False,1
+['Gamma-Secretase Inhibitor RO4929097'],renal cell carcinoma,unknown,0,True,False,1
+"['Goserelin Acetate', 'Leuprolide Acetate']",prostate cancer,unknown,0,True,False,1
+['HER-2-targeting CAR T Cells infusion'],breast cancer,unknown,0,True,False,1
+"['HER-2/neu peptide vaccine', 'sargramostim', 'rintatolimod']",HER2+ breast cancer,unknown,1,True,False,1
+['HLA-A*02:01-restricted VEGFR1-derived peptide vaccination'],pancreatic cancer,unknown,0,True,False,1
+['HM61713'],NSCLC,unknown,1,True,False,1
+['I-040302'],cancer NOS,unknown,0,True,False,1
+['I-131 Tositumomab therapeutic regimen'],cancer NOS,unknown,1,True,False,1
+['IMMU-107 (hPAM4)'],pancreatic cancer,unknown,1,True,False,1
+"['INCB040093 Monotherapy', 'INCB040093', 'itacitinib']",lymphoma,unknown,0,True,False,1
+['INNO-206'],pancreatic cancer,unknown,1,True,False,1
+"['IPI-926', 'Placebo Arm']",sarcoma,unknown,1,True,False,1
+['ITF2357'],cancer NOS,unknown,1,True,False,1
+['IVIG'],cancer NOS,unknown,0,True,False,1
+['Icotinib'],cancer NOS,unknown,1,True,False,1
+"['Imiquimod', 'non-medicated petroleum cream']",cancer NOS,unknown,0,True,False,1
+['Immunotherapeutic GSK2132231A'],melanoma,unknown,1,True,False,1
+['IncobotulinumtoxinA'],cancer NOS,unknown,0,True,False,1
+['Infliximab'],cancer NOS,unknown,0,True,False,1
+"['Investigational Treatment', 'Active comparator']",cancer NOS,unknown,1,True,False,1
+"['Iressa Day 1 given with Arimidex and Faslodex', 'Iressa Day 21 given with Arimidex and Faslodex']",breast cancer,unknown,0,True,False,1
+['Ixempra (Ixabepilone (BMS-247550) )'],cancer NOS,unknown,0,True,False,1
+['JX-594'],ovarian cancer,unknown,0,True,False,1
+"['KU-0059436 (AZD2281)(PARP inhibitor)', 'KU-0059436 (AZD2281)(PARP inhibitor)']",ovarian cancer,unknown,1,True,False,1
+['KW-2871'],melanoma,unknown,0,True,False,1
+"['Ketamine', 'Placebo']",cancer NOS,unknown,0,True,False,1
+['Ketoconazole'],cancer NOS,unknown,0,True,False,1
+['LBH589'],cancer NOS,unknown,0,True,False,1
+['LBH589'],lymphoma,unknown,0,True,False,1
+['LBH589'],multiple myeloma,unknown,1,True,False,1
+"['LDE225', 'INC424']",cancer NOS,unknown,1,True,False,1
+['LDE225'],cancer NOS,unknown,1,True,False,1
+['LDK378'],NSCLC,unknown,1,True,False,1
+"['LEE011', 'LGX818']",melanoma,unknown,1,True,False,1
+"['LEO 43204', 'Placebo']",cancer NOS,unknown,1,True,False,1
+['Labetuzumab Govitecan (LG)'],colorectal cancer,unknown,0,True,False,1
+['Lanreotide autogel 120 mg'],pancreatic cancer,unknown,1,True,False,1
+"['Leuprolide acetate depot (LAD) 11.25 mg 3 Month', 'Matched placebo']",lymphoma,unknown,0,True,False,1
+"['Leuprolide', 'hematopoietic cell transplant', 'reduced intensity allogeneic HCT']",AML,unknown,0,True,False,1
+['Lipotecan'],hepatocellular carcinoma,unknown,1,True,False,1
+['Lipotecan® (TLC388)'],hepatocellular carcinoma,unknown,0,True,False,1
+['M40403'],cancer NOS,unknown,0,True,False,1
+['MEK 162'],cancer NOS,unknown,0,True,False,1
+['MG4101'],hepatocellular carcinoma,unknown,1,True,False,1
+['MGCD0103 and Azacitidine'],lymphoma,unknown,0,True,False,1
+['MK2206'],lymphoma,unknown,0,True,False,1
+['MSC_apceth_101'],cancer NOS,unknown,0,True,False,1
+['MV'],pancreatic cancer,unknown,1,True,False,1
+['Melaxin (autologous dendritoma vaccine) and BCG'],melanoma,unknown,0,True,False,1
+['Melphalan'],cancer NOS,unknown,0,True,False,1
+['Midostaurin (PKC412)'],cancer NOS,unknown,1,True,False,1
+['Mithramycin'],sarcoma,unknown,0,True,False,1
+"['Modified FOLFOX6', 'Aflibercept']",colorectal cancer,unknown,0,True,False,1
+['Monoclonal antibody Hu3S193'],ovarian cancer,unknown,0,True,False,1
+['Moxetumomab Pasudotox'],cancer NOS,unknown,0,True,False,1
+"['NK cells', 'Cytarabine']",AML,unknown,1,True,False,1
+"['Naltrexone', 'Sugar Pill']",breast cancer,unknown,0,True,False,1
+"['OCV-501', 'Placebo']",AML,unknown,1,True,False,1
+['OTL38'],ovarian cancer,unknown,1,True,False,1
+['Octreotide'],cancer NOS,unknown,1,True,False,1
+['P276-00'],lymphoma,unknown,1,True,False,1
+['PEG-IFN-a2b'],cancer NOS,unknown,0,True,False,1
+['PR610'],solid tumors,unknown,0,True,False,1
+['PT-523 for Injection'],lung cancer NOS,unknown,0,True,False,1
+['PX-12'],pancreatic cancer,unknown,0,True,False,1
+"['Pacritinib', 'Decitabine', 'Cytarabine']",AML,unknown,0,True,False,1
+['Pacritinib'],colorectal cancer,unknown,0,True,False,1
+['Palifosfamide'],breast cancer,unknown,0,True,False,1
+"['Panobinostat - LBH589', 'Panobinostat - LBH589']",breast cancer,unknown,1,True,False,1
+"['Panobinostat', 'Bicalutamide']",prostate cancer,unknown,1,True,False,1
+['Panobinostat'],lymphoma,unknown,0,True,False,1
+['Parathyroid Hormone (teriparatide)'],lymphoma,unknown,0,True,False,1
+['Pasireotide LAR'],cancer NOS,unknown,1,True,False,1
+"['Pentostatin', 'Alemtuzumab']",lymphoma,unknown,0,True,False,1
+['Pidilizumab'],DLBCL,unknown,1,True,False,1
+['Placebo'],prostate cancer,unknown,1,True,False,1
+['Pomegranate-Extract Pill'],prostate cancer,unknown,1,True,False,1
+"['Prednisolone (Corticosteroid)', 'Propranolol', 'Placebo']",cancer NOS,unknown,0,True,False,1
+"['Propranolol', 'Placebo']",cancer NOS,unknown,1,True,False,1
+['R-HCVAD and R-MC'],DLBCL,unknown,0,True,False,1
+['RAD001'],cancer NOS,unknown,0,True,False,1
+['Radium-223'],prostate cancer,unknown,1,True,False,1
+['Resiquimod'],cancer NOS,unknown,1,True,False,1
+['Revlimid'],prostate cancer,unknown,1,True,False,1
+"['Ridaforolimus Tablet', 'Ridaforolimus Intravenous (IV) Infusion']",solid tumors,unknown,0,True,False,1
+['Rilimogene Galvacirepvec'],prostate cancer,unknown,1,True,False,1
+['Roferon-A'],cancer NOS,unknown,1,True,False,1
+['SGN-35'],lymphoma,unknown,1,True,False,1
+"['SU011248', 'Chemotherapy']",breast cancer,unknown,0,True,False,1
+['Samalizumab'],CLL,unknown,0,True,False,1
+['Selinexor'],SCLC,unknown,0,True,False,1
+"['Siltuximab', 'Dexamethasone']",multiple myeloma,unknown,1,True,False,1
+['Sodium Acetate C11 PET/CT Imaging'],glioma,unknown,0,True,False,1
+['Study Drug'],breast cancer,unknown,0,True,False,1
+['TAK-700'],prostate cancer,unknown,1,True,False,1
+['TAS-109'],colorectal cancer,unknown,0,True,False,1
+['TH-4000 (Tarloxotinib)'],NSCLC,unknown,0,True,False,1
+['TKI258'],multiple myeloma,unknown,1,True,False,1
+['TNP-470'],pancreatic cancer,unknown,0,True,False,1
+"['TP-38', 'TP38']",glioblastoma,unknown,1,True,False,1
+['TPI 287'],cancer NOS,unknown,0,True,False,1
+['TXA127'],cancer NOS,unknown,0,True,False,1
+"['Tarceva', 'Temodar']",glioblastoma,unknown,1,True,False,1
+['Tarceva'],breast cancer,unknown,0,True,False,1
+['Tavokinogene Telseplasmid (tavo)'],HNSCC,unknown,0,True,False,1
+"['Taxol', 'Campt, Topotesin']",gastric cancer,unknown,0,True,False,1
+['Taxotere'],breast cancer,unknown,0,True,False,1
+"['Thiotepa', 'Fludarabine', 'Rabbit ATG', 'Palifermin']",AML,unknown,0,True,False,1
+['Thymoglobulin (rATG)'],cancer NOS,unknown,0,True,False,1
+"['Topical NO', 'Placebo']",cancer NOS,unknown,1,True,False,1
+"['Trinity multipotent stem cells', 'Demineralized bone matrix(DBM)']",cancer NOS,unknown,0,True,False,1
+['Triptorelin'],breast cancer,unknown,0,True,False,1
+['Troxatyl™ (Cytotoxic Chemotherapeutic)'],cancer NOS,unknown,0,True,False,1
+"['Tumor specific peptides: MAGE-3.A1 and / or NA17.A2', 'Galectin-3 inhibitor: GM-CT-01 systemic injections', 'Galectin-3 inhibitor: GM-CT-01 Peri-tumoral administration']",melanoma,unknown,0,True,False,1
+"['VCR, CTX, ADM; IFO, VP-16']",sarcoma,unknown,0,True,False,1
+['VELCADE'],lung cancer NOS,unknown,0,True,False,1
+"['Valrubicin, 800 mg']",bladder cancer,unknown,0,True,False,1
+"['Vandetanib', 'Anastrozole']",breast cancer,unknown,1,True,False,1
+['Vandetanib'],thyroid cancer,unknown,1,True,False,1
+['Velcade'],cancer NOS,unknown,0,True,False,1
+['Veltuzumab'],cancer NOS,unknown,0,True,False,1
+"['Vigil™ Vaccine', 'Placebo']",colorectal cancer,unknown,0,True,False,1
+['Vinflunine'],gastric cancer,unknown,0,True,False,1
+['Vitamin D'],breast cancer,unknown,0,True,False,1
+['Volociximab'],ovarian cancer,unknown,0,True,False,1
+['Voreloxin Injection'],ovarian cancer,unknown,1,True,False,1
+"['Vorinostat', 'Placebo']",cancer NOS,unknown,0,True,False,1
+['WT1/PRAME vaccination'],AML,unknown,1,True,False,1
+['YF476'],cancer NOS,unknown,0,True,False,1
+"['ZGN-440 sterile diluent', 'ZGN-440 for injectable suspension']",cancer NOS,unknown,1,True,False,1
+['Zoledronic Acid'],multiple myeloma,unknown,0,True,False,1
+['[F-18] FLT'],HNSCC,unknown,0,True,False,1
+"['anti-thymocyte globulin', 'busulfan', 'fludarabine phosphate']",cancer NOS,unknown,1,True,False,1
+"['anti-thymocyte globulin', 'melphalan']",multiple myeloma,unknown,0,True,False,1
+"['antibody ch14.18', 'GM-CSF', 'IL-2 i.v.', 'IL-2 s.c.', 'Retinoic acid']",cancer NOS,unknown,0,True,False,1
+"['arsenic trioxide', 'dexamethasone']",multiple myeloma,unknown,0,True,False,1
+"['arsenic trioxide', 'idarubicin', 'tretinoin']",cancer NOS,unknown,0,True,False,1
+['arsenic trioxide'],breast cancer,unknown,0,True,False,1
+"['autologous immunoglobulin idiotype-KLH conjugate vaccine', 'sargramostim']",lymphoma,unknown,0,True,False,1
+['cabazitaxel'],cancer NOS,unknown,0,True,False,1
+"['carcinoembryonic antigen peptide 1-6D', ""incomplete Freund's adjuvant"", 'sargramostim']",colorectal cancer,unknown,0,True,False,1
+"['chemotherapy and GI-4000', 'GI-4000']",colorectal cancer,unknown,0,True,False,1
+['chemotherapy followed by Zevalin'],DLBCL,unknown,1,True,False,1
+"['chemotherapy', 'Glivec']",cancer NOS,unknown,1,True,False,1
+['cilengitide'],AML,unknown,0,True,False,1
+['disulfiram and chelated zinc'],melanoma,unknown,0,True,False,1
+['donor natural killer cell infusion'],cancer NOS,unknown,1,True,False,1
+['efalizumab'],cancer NOS,unknown,0,True,False,1
+"['estriol', 'Placebo']",cancer NOS,unknown,1,True,False,1
+"['filgrastim', 'melphalan']",multiple myeloma,unknown,0,True,False,1
+['gamma-secretase/Notch signalling pathway inhibitor RO4929097'],glioblastoma,unknown,0,True,False,1
+['ibandronate [Bondronat]'],cancer NOS,unknown,0,True,False,1
+['ifosfamide'],sarcoma,unknown,0,True,False,1
+['intervention'],colorectal cancer,unknown,0,True,False,1
+['intravenous T900607-sodium'],lymphoma,unknown,0,True,False,1
+['lanreotide (Autogel formulation)'],cancer NOS,unknown,1,True,False,1
+"['methylene blue', 'indocyanine green solution']",breast cancer,unknown,0,True,False,1
+['mifepristone vaginal tablets'],cancer NOS,unknown,1,True,False,1
+['naked DNA coding for protein AMEP'],melanoma,unknown,0,True,False,1
+['nelfinavir mesylate'],sarcoma,unknown,0,True,False,1
+"['placebo', 'A007']",cancer NOS,unknown,1,True,False,1
+['plerixafor'],multiple myeloma,unknown,0,True,False,1
+"['r-metHuSCF and Filgrastim', 'r-metHuSCF and Filgrastim', 'Chemotherapy plus Filgrastim']",lymphoma,unknown,0,True,False,1
+"['recombinant interferon alfa', 'amifostine trihydrate', 'bromodeoxyuridine', 'cytarabine', 'idarubicin', 'idoxuridine', 'isotretinoin', 'mitoxantrone hydrochloride']",cancer NOS,unknown,0,True,False,1
+"['recombinant interferon alfa', 'sargramostim']",cancer NOS,unknown,0,True,False,1
+"['ritonavir', 'lopinavir']",glioblastoma,unknown,0,True,False,1
+['rosiglitazone maleate'],cancer NOS,unknown,0,True,False,1
+['saracatinib'],prostate cancer,unknown,0,True,False,1
+"['suramin', 'therapeutic hydrocortisone']",cancer NOS,unknown,0,True,False,1
+['triptorelin'],breast cancer,unknown,0,True,False,1
+['velcade'],multiple myeloma,unknown,0,True,False,1
+['volociximab'],melanoma,unknown,0,True,False,1
+['vorinostat'],breast cancer,unknown,0,True,False,1

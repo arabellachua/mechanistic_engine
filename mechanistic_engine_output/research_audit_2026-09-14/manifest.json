@@ -1,0 +1,57 @@
+{
+  "created_utc": "2026-09-14T04:41:52.291978+00:00",
+  "seed": 42,
+  "cutoff": 2015,
+  "sources": [
+    {
+      "file": "classification_matrix.csv",
+      "sha256": "fadc18b0bbfd77208388bb4da843c21465a0ff717b16dfa68d61171b0dce0eac",
+      "mtime_utc": "2026-06-01T02:22:55.282398+00:00",
+      "rows": 638,
+      "columns": 92,
+      "duplicate_header_names": {
+        "drug_is_mapped": 4
+      },
+      "duplicate_nct_ids": 0,
+      "year_min": 1994.0,
+      "year_max": 2024.0,
+      "strict_balanced_disagreements": 0,
+      "balanced_permissive_disagreements": 0
+    },
+    {
+      "file": "full_feature_matrix.csv",
+      "sha256": "5cbd5211271b8e5d52bd711563767586cd5729c5374dcd73960d3e1372f603a3",
+      "mtime_utc": "2026-05-09T09:11:16+00:00",
+      "rows": 1038,
+      "columns": 112,
+      "duplicate_header_names": {},
+      "duplicate_nct_ids": 0,
+      "year_min": 1993.0,
+      "year_max": 2026.0,
+      "strict_balanced_disagreements": 51,
+      "balanced_permissive_disagreements": 0
+    },
+    {
+      "file": "deep_predictions.csv",
+      "sha256": "dc3701c58ae8bef7107ea49d5739450d849638192563cf1fc237782830d2092c",
+      "mtime_utc": "2026-08-30T19:53:22.609025+00:00",
+      "rows": 419,
+      "columns": 10,
+      "duplicate_header_names": {},
+      "duplicate_nct_ids": 0
+    }
+  ],
+  "common_nct_ids": 105,
+  "classification_only": 533,
+  "full_only": 933,
+  "review_queue_size": 150,
+  "deep_predictions_match_full_snapshot": true,
+  "limitations": [
+    "File modification dates are not verified generation dates.",
+    "No retraining, external source validation or manual adjudication performed.",
+    "CIs condition on saved predictions and omit training/selection uncertainty.",
+    "Unknown drugs share one cluster in drug bootstrap; canonical drugs are not full regimen identities.",
+    "Snapshot matching cannot establish historical database availability or model provenance.",
+    "Review queue is deliberately stratified; unweighted error rates are not population estimates."
+  ]
+}

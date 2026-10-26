@@ -136,9 +136,9 @@ def compute_raw_features(trial: pd.Series, pair_data: dict, target_data: dict) -
     features["ot_animal_model"]        = _safe(pair.get("ot_animal_model", 0))
     features["ot_rna_expression"]      = _safe(pair.get("ot_rna_expression", 0))
     features["ot_literature"]          = _safe(pair.get("ot_literature", 0))
-    features["pubmed_pair_count"]      = _safe(pair.get("pubmed_pair_count", 0))
-    features["clinical_trial_pub_count"] = _safe(pair.get("clinical_trial_pub_count", 0))
-    features["pair_pub_acceleration"]  = _safe(pair.get("pair_pub_acceleration", 0))
+    features["pubmed_pair_count"]      = _safe(pair.get("pubmed_pair_count"), np.nan)
+    features["clinical_trial_pub_count"] = _safe(pair.get("clinical_trial_pub_count"), np.nan)
+    features["pair_pub_acceleration"]  = _safe(pair.get("pair_pub_acceleration"), np.nan)
     features["lineage_specificity"]    = _safe(pair.get("lineage_specificity", 0))
     features["gwas_disease_specificity"] = _safe(pair.get("gwas_disease_specificity",
                                                tgt.get("gwas_disease_specificity", 0)))
@@ -158,6 +158,7 @@ def compute_raw_features(trial: pd.Series, pair_data: dict, target_data: dict) -
     # ── MISSINGNESS INDICATORS (v6: explicit flags instead of silent imputation) ──
     features["ot_data_missing"]   = 0 if pair.get("has_real_ot_data", False) else 1
     features["cbio_data_missing"] = 0 if has_cbio else 1
+    features["pubmed_data_missing"] = 0 if pair.get("has_real_pubmed_data", False) else 1
     features["biomarker_missing"] = 0 if has_biomarker else 1
 
     # ── TARGET-LEVEL features (same for all trials with same target) ───────────
@@ -252,7 +253,9 @@ def compute_raw_features(trial: pd.Series, pair_data: dict, target_data: dict) -
     features["polypharmacology_proxy"] = 1.0 - features["tractability"]
 
     # Human study fraction (from PubMed pair data)
-    if features["pubmed_pair_count"] > 0:
+    if not np.isfinite(features["pubmed_pair_count"]) or not np.isfinite(features["clinical_trial_pub_count"]):
+        features["human_study_fraction"] = np.nan
+    elif features["pubmed_pair_count"] > 0:
         features["human_study_fraction"] = min(
             features["clinical_trial_pub_count"] / max(features["pubmed_pair_count"], 0.01),
             1.0
@@ -350,6 +353,11 @@ def compute_all_features(trials_df: pd.DataFrame,
         all_rows.append({**raw_features, **composite})
 
     feature_df = pd.DataFrame(all_rows, index=trials_df.index)
+    # Keep normalized trial columns as the single source of truth when a raw
+    # feature (currently ``drug_is_mapped``) is recomputed downstream.
+    overlapping_cols = feature_df.columns.intersection(trials_df.columns)
+    if len(overlapping_cols):
+        feature_df = feature_df.drop(columns=overlapping_cols)
     result = pd.concat([trials_df, feature_df], axis=1)
 
     # ── Missingness report ─────────────────────────────────────────────────────
@@ -401,16 +409,19 @@ def build_feature_sets(df: pd.DataFrame, feature_cols: list[str]) -> dict:
         "tumor_expression", "tumor_specificity", "normal_tissue_burden",
         "pathway_evidence", "modality_score",
         # Missingness indicators
-        "ot_data_missing", "cbio_data_missing", "biomarker_missing",
+        "ot_data_missing", "cbio_data_missing", "pubmed_data_missing", "biomarker_missing",
         # v7: drug mapping flag — only include once
         # (also in raw features, deduplicated by _prep)
     ]
 
     available_composite = [c for c in composite_cols if c in df.columns]
-    available_raw = [c for c in feature_cols if c in df.columns]
+    available_raw = [
+        c for c in feature_cols if c in df.columns and c not in composite_cols
+    ]
     available_pair = [c for c in key_pair_cols if c in df.columns]
     # Primary feature set: composite scores + pair-level features
     available_enhanced = list(dict.fromkeys(available_composite + available_pair))
+    available_hybrid = list(dict.fromkeys(available_raw + available_composite))
 
     def _prep(X: pd.DataFrame) -> pd.DataFrame:
         # Deduplicate columns — LightGBM crashes on duplicate column names
@@ -420,5 +431,5 @@ def build_feature_sets(df: pd.DataFrame, feature_cols: list[str]) -> dict:
     return {
         "composite": _prep(df[available_enhanced]),
         "raw": _prep(df[list(dict.fromkeys(available_raw))]),
-        "hybrid": _prep(df[available_enhanced]),
+        "hybrid": _prep(df[available_hybrid]),
     }

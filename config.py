@@ -131,6 +131,7 @@ TARGET_LEVEL_FEATURES = [
 BIOMARKER_FEATURES = [
     "biomarker_directness", "biomarker_prevalence", "biomarker_clonality",
     "assay_precision", "biomarker_missing", "cbio_data_missing", "ot_data_missing",
+    "pubmed_data_missing",
 ]
 
 TRIAL_FEATURES = [

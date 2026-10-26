@@ -1,0 +1,27 @@
+{
+  "temporal": {
+    "mean_auc_difference": -0.023756799739085177,
+    "conditional_95pct_interval": {
+      "low": -0.11979611408944417,
+      "high": 0.0758139445346056,
+      "valid_resamples": 2000,
+      "requested_resamples": 2000,
+      "cluster": "target_disease_pair"
+    },
+    "brier_difference": 0.02067597479183292,
+    "passes_development_gate": false
+  },
+  "unseen_target_disease_pair": {
+    "mean_auc_difference": 0.040841064221810996,
+    "conditional_95pct_interval": {
+      "low": -0.013575451403434479,
+      "high": 0.10162900871564712,
+      "valid_resamples": 2000,
+      "requested_resamples": 2000,
+      "cluster": "target_disease_pair"
+    },
+    "brier_difference": 0.005911038033737603,
+    "passes_development_gate": false
+  },
+  "both_modes_pass": false
+}

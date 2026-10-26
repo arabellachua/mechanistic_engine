@@ -1,0 +1,49 @@
+{
+  "seed": 42,
+  "n_training": 472,
+  "n_positive": 92,
+  "n_post2015_scored": 0,
+  "n_protocol_missing": 3,
+  "excluded_post2015": 166,
+  "excluded_missing_year": 0,
+  "excluded_invalid_training_label": 0,
+  "candidates": [
+    "numeric_reference",
+    "target_reference",
+    "core_lr_c0.03",
+    "core_lr_c0.3",
+    "core_rbf_c1",
+    "core_rbf_c10",
+    "core_interactions",
+    "structured_core_c1",
+    "eligibility_only_c10",
+    "protocol_only_c10",
+    "protocol_core_c1",
+    "protocol_core_c10"
+  ],
+  "primary_metric": "mean outer-fold ROC AUC",
+  "reference": "numeric_reference",
+  "inner_selection": "mean AUC descending, mean Brier ascending, name",
+  "practical_gain_threshold": 0.05,
+  "development_gate": "nested selected delta AUC >= 0.05, cluster interval low > 0, and no worse Brier in BOTH modes",
+  "text_allowlist": [
+    "conditionsModule.conditions",
+    "armsInterventionsModule.interventions DRUG/BIOLOGICAL name",
+    "eligibilityModule.eligibilityCriteria"
+  ],
+  "source_sha256": {
+    "mechanistic_engine_output/data/classification_matrix.csv": "fadc18b0bbfd77208388bb4da843c21465a0ff717b16dfa68d61171b0dce0eac",
+    "mechanistic_engine_output/data/raw_trials.json": "9e779acc8b7c78c0f4f35d76ff668a19f7e8f69472f968d13379bc0d74a75ebf",
+    "/Users/tianzechen/Desktop/mechanistic_engine/run_trial_context_experiments.py": "f935109eb5acf9655e19422e69f9f5dfef6b4a02454d0c662d707bead638e60a",
+    "run_context_experiments.py": "5ee43285dcd12fd716117d04a82f2920dd1415a9860e3e5f9eeb356be311cf7a",
+    "run_performance_experiments.py": "244b52b51332a826117f9197ca030ca57d20f217bcf6ebbfe7cae600d8fe159f"
+  },
+  "limitations": [
+    "Previously explored development windows; nested selection does not make them fresh data.",
+    "Heuristic labels unchanged; no confirmed trial endpoint labels.",
+    "Saved current protocol and biology features are not historical as-of snapshots.",
+    "Text model extends biology-only scope to trial context; operational language can confound it.",
+    "Unseen pairs can share individual targets/drugs; grouped splits are not chronological.",
+    "Bootstrap conditions on fitted predictions and omits training/selection uncertainty."
+  ]
+}

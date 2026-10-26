@@ -1,0 +1,181 @@
+mode,fold,sign,term,coefficient
+temporal,0,negative,stage,-0.34197829637477206
+temporal,0,negative,previously,-0.2563436585517077
+temporal,0,negative,characteristics,-0.2538103564252186
+temporal,0,negative,brain,-0.2512338226014408
+temporal,0,negative,lymphoma,-0.24387739705515496
+temporal,0,negative,iv,-0.2262290870244991
+temporal,0,negative,weeks,-0.21916202191846432
+temporal,0,negative,leukemia,-0.20950023296819367
+temporal,0,negative,stage iv,-0.20734228731678456
+temporal,0,negative,uln,-0.20352656317486953
+temporal,0,negative,criteria histologically,-0.1995572683152657
+temporal,0,negative,screening,-0.1957638239053569
+temporal,0,negative,metastases,-0.18929040165127686
+temporal,0,negative,age,-0.18822329803193952
+temporal,0,negative,cancer stage,-0.18796551749665397
+temporal,0,positive,nsclc prior,0.4303885572671243
+temporal,0,positive,protocol therapy,0.37881679233394927
+temporal,0,positive,renal dysfunction,0.3741018171364748
+temporal,0,positive,agree,0.36375104639284617
+temporal,0,positive,hepatic renal,0.3369335608484026
+temporal,0,positive,advanced nsclc,0.32803176840998044
+temporal,0,positive,participate,0.2999747375772296
+temporal,0,positive,allowed exclusion,0.29956253480408535
+temporal,0,positive,5x,0.2958131171185361
+temporal,0,positive,radiotherapy allowed,0.2859528353519866
+temporal,0,positive,day,0.27523928953936844
+temporal,0,positive,ability,0.2732741136872956
+temporal,0,positive,recurrent metastatic,0.26983608481896815
+temporal,0,positive,neck,0.26569434212483944
+temporal,0,positive,head,0.26569434212483944
+temporal,1,negative,stage,-0.41466929375614847
+temporal,1,negative,uln,-0.41246750046426417
+temporal,1,negative,concurrent,-0.3710874786921125
+temporal,1,negative,characteristics,-0.3704465178577956
+temporal,1,negative,brain,-0.3567992069126249
+temporal,1,negative,leukemia,-0.3212244212204495
+temporal,1,negative,previously,-0.3150609754872846
+temporal,1,negative,illness,-0.280019288072607
+temporal,1,negative,criteria histologically,-0.2628417001965777
+temporal,1,negative,stage iv,-0.26019643376205925
+temporal,1,negative,toxicities,-0.2595783003719949
+temporal,1,negative,disease characteristics,-0.24929878033064518
+temporal,1,negative,µl,-0.24558145932551106
+temporal,1,negative,dl total,-0.24463746576715487
+temporal,1,negative,concurrent therapy,-0.2442448494210725
+temporal,1,positive,protocol therapy,0.4955997680857171
+temporal,1,positive,adequate bone,0.44788197203433844
+temporal,1,positive,nsclc prior,0.44750857882966005
+temporal,1,positive,5x,0.4265791849248793
+temporal,1,positive,agree use,0.4157118582826983
+temporal,1,positive,severe,0.41177007571196705
+temporal,1,positive,agree,0.373933983702154
+temporal,1,positive,mm3,0.3717014341269635
+temporal,1,positive,day,0.36648072111536917
+temporal,1,positive,scan,0.3664134734330376
+temporal,1,positive,trastuzumab,0.36303097110860544
+temporal,1,positive,chemotherapy radiotherapy,0.36227728452829766
+temporal,1,positive,fish,0.3598646375564996
+temporal,1,positive,participate,0.35709270565253853
+temporal,1,positive,registration study,0.3547689179660135
+temporal,2,negative,uln,-0.4848115360082221
+temporal,2,negative,characteristics,-0.46126913646910805
+temporal,2,negative,criteria histologically,-0.4333490887133556
+temporal,2,negative,stage,-0.37927593379075003
+temporal,2,negative,concurrent,-0.36321075094865723
+temporal,2,negative,µl,-0.3624841079026432
+temporal,2,negative,illness,-0.3416317917923568
+temporal,2,negative,post,-0.3316499823255961
+temporal,2,negative,leukemia,-0.3217051953994358
+temporal,2,negative,folfox,-0.3189784249092142
+temporal,2,negative,brain,-0.3072138916216022
+temporal,2,negative,disease characteristics,-0.3065483778009638
+temporal,2,negative,evaluation,-0.3003431644191579
+temporal,2,negative,mm³,-0.2983130298317975
+temporal,2,negative,previously,-0.2967759702927474
+temporal,2,positive,109,0.5597420410540428
+temporal,2,positive,adequate bone,0.4944905620467681
+temporal,2,positive,judged,0.4796732870267579
+temporal,2,positive,nsclc prior,0.4771453812949633
+temporal,2,positive,severe,0.4582478348816141
+temporal,2,positive,concomitant,0.44983606486798383
+temporal,2,positive,tests,0.41659818280291117
+temporal,2,positive,greater,0.4092212276045872
+temporal,2,positive,evaluable,0.40718582613012283
+temporal,2,positive,malt,0.39230685730628506
+temporal,2,positive,fish,0.39203287709770535
+temporal,2,positive,day,0.3895937471619229
+temporal,2,positive,chemotherapy radiotherapy,0.37468837570956465
+temporal,2,positive,informed consent,0.3688106461690347
+temporal,2,positive,diameter,0.36840122826445865
+unseen_target_disease_pair,0,negative,concurrent,-0.5108574364735985
+unseen_target_disease_pair,0,negative,egfr,-0.43155660628575315
+unseen_target_disease_pair,0,negative,time,-0.39817095178413087
+unseen_target_disease_pair,0,negative,characteristics,-0.39174763922456857
+unseen_target_disease_pair,0,negative,uln,-0.37808047260049626
+unseen_target_disease_pair,0,negative,line,-0.34231803478720096
+unseen_target_disease_pair,0,negative,anaplastic,-0.3392027356858784
+unseen_target_disease_pair,0,negative,intravenous,-0.32409962013455645
+unseen_target_disease_pair,0,negative,post,-0.32404487746150096
+unseen_target_disease_pair,0,negative,expression,-0.3216619438211592
+unseen_target_disease_pair,0,negative,stage,-0.30731193781829236
+unseen_target_disease_pair,0,negative,leukemia,-0.3055677127221678
+unseen_target_disease_pair,0,negative,adult,-0.29791465383622684
+unseen_target_disease_pair,0,negative,prior concurrent,-0.29751277719159486
+unseen_target_disease_pair,0,negative,testing,-0.29554902988148246
+unseen_target_disease_pair,0,positive,109,0.48175643688060377
+unseen_target_disease_pair,0,positive,allowed,0.4509396630489622
+unseen_target_disease_pair,0,positive,dysfunction,0.44433195740656417
+unseen_target_disease_pair,0,positive,administered,0.43435778931910346
+unseen_target_disease_pair,0,positive,renal,0.42977392193917713
+unseen_target_disease_pair,0,positive,day,0.41962675235439684
+unseen_target_disease_pair,0,positive,mmhg,0.4157489569200592
+unseen_target_disease_pair,0,positive,appendix,0.4122232312312363
+unseen_target_disease_pair,0,positive,chemotherapy radiotherapy,0.4091185353783955
+unseen_target_disease_pair,0,positive,greater equal,0.40877311061067195
+unseen_target_disease_pair,0,positive,drug,0.3872308053702177
+unseen_target_disease_pair,0,positive,greater,0.38390979795955743
+unseen_target_disease_pair,0,positive,adequate bone,0.3829343800381882
+unseen_target_disease_pair,0,positive,currently,0.38045905236886907
+unseen_target_disease_pair,0,positive,renal function,0.38004493861448263
+unseen_target_disease_pair,1,negative,characteristics,-0.4484173852429512
+unseen_target_disease_pair,1,negative,concurrent,-0.4350245911707828
+unseen_target_disease_pair,1,negative,dose study,-0.3869576615311736
+unseen_target_disease_pair,1,negative,line,-0.36631977449408615
+unseen_target_disease_pair,1,negative,brain,-0.35542107649643834
+unseen_target_disease_pair,1,negative,heart,-0.35289036844591937
+unseen_target_disease_pair,1,negative,egfr,-0.3264609417013243
+unseen_target_disease_pair,1,negative,metastatic,-0.31777995500796835
+unseen_target_disease_pair,1,negative,methods,-0.3082006983384419
+unseen_target_disease_pair,1,negative,psa,-0.3077750898441581
+unseen_target_disease_pair,1,negative,colorectal,-0.3070528431667545
+unseen_target_disease_pair,1,negative,stage,-0.3047127120871679
+unseen_target_disease_pair,1,negative,colorectal cancer,-0.3001280941857834
+unseen_target_disease_pair,1,negative,acceptable,-0.2969814622186759
+unseen_target_disease_pair,1,negative,note,-0.2891277403796721
+unseen_target_disease_pair,1,positive,nsclc prior,0.5136888097275722
+unseen_target_disease_pair,1,positive,greater,0.46437706662965894
+unseen_target_disease_pair,1,positive,adequate,0.4182834357666319
+unseen_target_disease_pair,1,positive,malt,0.38294392037947406
+unseen_target_disease_pair,1,positive,known active,0.38205122583547557
+unseen_target_disease_pair,1,positive,severe,0.3781407769695539
+unseen_target_disease_pair,1,positive,appendix,0.37629279325206655
+unseen_target_disease_pair,1,positive,ihc,0.37264230761190337
+unseen_target_disease_pair,1,positive,advanced nsclc,0.3720842407930689
+unseen_target_disease_pair,1,positive,renal,0.3678905060529458
+unseen_target_disease_pair,1,positive,history malignancy,0.3639765806858294
+unseen_target_disease_pair,1,positive,judged,0.35115352109233616
+unseen_target_disease_pair,1,positive,temozolomide,0.350943293242455
+unseen_target_disease_pair,1,positive,concomitant,0.3493248023054326
+unseen_target_disease_pair,1,positive,urine protein,0.34886367321183526
+unseen_target_disease_pair,2,negative,uln,-0.4425964496945551
+unseen_target_disease_pair,2,negative,stage,-0.3979786814659382
+unseen_target_disease_pair,2,negative,characteristics,-0.3807280209496423
+unseen_target_disease_pair,2,negative,receptor,-0.3547049790912018
+unseen_target_disease_pair,2,negative,post,-0.3244542989598901
+unseen_target_disease_pair,2,negative,µl,-0.3173723735759824
+unseen_target_disease_pair,2,negative,leukemia,-0.3170017467021091
+unseen_target_disease_pair,2,negative,assessed investigator,-0.31560504111049303
+unseen_target_disease_pair,2,negative,ii,-0.311944543341555
+unseen_target_disease_pair,2,negative,cyclophosphamide,-0.3018230265080769
+unseen_target_disease_pair,2,negative,receive,-0.2919213141148126
+unseen_target_disease_pair,2,negative,estrogen,-0.29016497477443526
+unseen_target_disease_pair,2,negative,procedure,-0.28978496512428237
+unseen_target_disease_pair,2,negative,positive,-0.2882683924100936
+unseen_target_disease_pair,2,negative,hepatitis virus,-0.28781574344893146
+unseen_target_disease_pair,2,positive,109,0.6744511408242632
+unseen_target_disease_pair,2,positive,adequate bone,0.49522252441499137
+unseen_target_disease_pair,2,positive,participant,0.491524280694001
+unseen_target_disease_pair,2,positive,judged,0.47299874215144866
+unseen_target_disease_pair,2,positive,number,0.46449957835605915
+unseen_target_disease_pair,2,positive,history,0.4008318830501453
+unseen_target_disease_pair,2,positive,adequate,0.39509319524303005
+unseen_target_disease_pair,2,positive,temozolomide,0.389174749225211
+unseen_target_disease_pair,2,positive,fish,0.37955643887479656
+unseen_target_disease_pair,2,positive,gemcitabine carboplatin,0.3697531195239263
+unseen_target_disease_pair,2,positive,day,0.36565081277559613
+unseen_target_disease_pair,2,positive,agree use,0.3649988859627271
+unseen_target_disease_pair,2,positive,participate,0.35701368110263587
+unseen_target_disease_pair,2,positive,lactating women,0.35382136986660506
+unseen_target_disease_pair,2,positive,laboratory abnormalities,0.3511950708656379
