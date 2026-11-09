@@ -1,0 +1,2 @@
+# Paste NCT IDs here, one per line (anything else on a line is ignored).
+# Shared 10-trial pilot first, then your extra 5-10.
