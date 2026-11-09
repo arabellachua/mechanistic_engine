@@ -1,418 +1,254 @@
 """
-features.py — Feature engineering for the mechanistic biology engine.
+features.py — Registry-driven raw features. (Issues 2, 3, 6, 8)
 
-v6 CHANGES (professor feedback):
-  1. PAIR-LEVEL FEATURES: Features now vary per (target, disease) combination.
-     Every pembrolizumab trial no longer gets identical scores — the model now
-     sees different alteration frequencies, OT scores, and PubMed counts for
-     pembrolizumab+melanoma vs pembrolizumab+NSCLC vs pembrolizumab+gastric.
-
-  2. MISSINGNESS INDICATORS: Instead of silently imputing median values for
-     missing biomarker data (which hides the fact that 79% of trials have no
-     biomarker), we now add explicit binary indicator columns:
-       - biomarker_missing (1 = no biomarker identified)
-       - cbio_data_missing  (1 = no cBioPortal data for this pair)
-       - ot_data_missing    (1 = no Open Targets data for this pair)
-     The model can then learn the relationship between missingness and outcomes,
-     rather than treating imputed medians as real observations.
-
-  3. DEPMAP: Added DepMap essentiality scores (Chronos) as target-level features.
-
-  4. HPA FIXED: HPA features are now populated (Ensembl ID fix in clients.py),
-     so tumor_expression / normal_tissue_burden will have real data.
+What changed
+  * No hand-weighted composite scores (CDS/TDS/BFS/...) are fed to models. Models learn
+    their own weighting from raw features; domain-level summaries are computed after
+    training from SHAP values (interpretation.py), so they are data-derived.
+  * Every feature is defined in config.FEATURE_REGISTRY with a leakage class.
+  * Knowledge features are time-bounded to the trial's start year: PubMed counts use
+    publication date < start year, ChEMBL potency uses document year < start year, and
+    GWAS hits use association publication date < start year.
+  * IO context is DISEASE-level (TMB, MSI-H fraction, leukocyte fraction of the cancer
+    type) instead of v8's per-target constants (a "TMB relevance of EGFR" is not a
+    measurable quantity).
+  * Missing data stay NaN. LightGBM handles NaN natively; linear models impute inside
+    a fitted pipeline with explicit missingness indicators. No fillna(-1).
+  * Multi-target drugs: gene-level features are averaged over up to 5 targets.
 """
+from __future__ import annotations
+
+import re
+from collections import defaultdict
+from functools import lru_cache
 
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
-from config import log
 
-# ── Composite score weights ───────────────────────────────────────────────────
+from config import FEATURE_REGISTRY, TRIAL_DESIGN, log
+from normalize import DISEASE_BY_KEY
 
-CDS_WEIGHTS = {
-    "cosmic_census_member": 0.25,
-    "somatic_evidence": 0.20,
-    "ot_somatic_mutation": 0.15,
-    "ot_genetic_association": 0.15,
-    "gwas_association_count": 0.10,
-    "gwas_disease_specificity": 0.10,
-    "disgenet_score": 0.05,
+GENE_LEVEL = [k for k, v in FEATURE_REGISTRY.items() if v["level"] in ("target", "pair")]
+
+# Gene symbols that are ordinary words: query the protein name instead.
+PUBMED_GENE_TERMS = {
+    "AR": '"androgen receptor"[tiab]', "MET": '("c-Met"[tiab] OR "MET amplification"[tiab] OR "MET exon"[tiab])',
+    "RET": '("RET fusion"[tiab] OR "RET rearrangement"[tiab] OR "RET kinase"[tiab] OR "RET mutation"[tiab])',
+    "KIT": '("c-KIT"[tiab] OR "KIT mutation"[tiab] OR CD117[tiab])', "SRC": '"Src kinase"[tiab]',
+    "ESR1": '("estrogen receptor"[tiab] OR ESR1[tiab])', "TUBB": "tubulin[tiab]",
+    "ALK": '("ALK"[tiab] AND (kinase[tiab] OR rearrangement[tiab] OR fusion[tiab]))',
+    "MTOR": '(mTOR[tiab] OR "mammalian target of rapamycin"[tiab])', "CD274": '("PD-L1"[tiab] OR CD274[tiab])',
+    "PDCD1": '("PD-1"[tiab] OR PDCD1[tiab])', "ERBB2": '(HER2[tiab] OR ERBB2[tiab])',
+    "MS4A1": "CD20[tiab]", "TNFRSF8": "CD30[tiab]", "TACSTD2": '(TROP2[tiab] OR "Trop-2"[tiab])',
 }
 
-TDS_WEIGHTS = {
-    "tractability": 0.20,
-    "binding_evidence": 0.15,
-    "potency_proxy": 0.15,
-    "ot_known_drug": 0.15,
-    "ot_overall_score": 0.10,
-    "network_degree": 0.10,
-    "depmap_essential": 0.10,
-    "mechanistic_maturity": 0.05,
+
+def _gene_term(gene: str) -> str:
+    return PUBMED_GENE_TERMS.get(gene, f'"{gene}"[tiab]')
+
+
+# ── cBioPortal pre-computation ───────────────────────────────────────────────
+def precompute_cbio(genes: list[str], diseases: list[str], thorsson: pd.Series | None) -> tuple[dict, dict]:
+    import clients
+    entrez = clients.cbio_entrez(genes)
+    pair, ctx = {}, {}
+    for dkey in diseases:
+        d = DISEASE_BY_KEY.get(dkey)
+        if d is None or not d.tcga:
+            continue
+        agg = defaultdict(lambda: np.zeros(3))
+        n_seq = n_cna = 0
+        tmb, msi = [], []
+        for study in d.tcga:
+            res = clients.cbio_study_alterations(study, list(entrez.values()))
+            if res is None:
+                continue
+            n_seq += res["n_seq"]
+            n_cna += res["n_cna"]
+            for eid, c in res["counts"].items():
+                agg[eid] += np.array(c)
+            tmb += clients.cbio_clinical_values(study, "TMB_NONSYNONYMOUS")
+            msi += clients.cbio_clinical_values(study, "MSI_SCORE_MANTIS")
+        for sym, eid in entrez.items():
+            m, a, dl = agg.get(eid, np.zeros(3))
+            pair[(sym, dkey)] = {
+                "somatic_mut_freq": m / n_seq if n_seq else np.nan,
+                "cna_amp_freq": a / n_cna if n_cna else np.nan,
+                "cna_homdel_freq": dl / n_cna if n_cna else np.nan,
+            }
+        lf = np.nan
+        if thorsson is not None:
+            codes = [s.split("_")[0].upper() for s in d.tcga]
+            vals = [thorsson.get(c) for c in codes if c in thorsson.index]
+            lf = float(np.nanmean(vals)) if vals else np.nan
+        ctx[dkey] = {
+            "tcga_tmb_median_log": float(np.log1p(np.median(tmb))) if tmb else np.nan,
+            "tcga_msi_high_frac": float(np.mean(np.array(msi) > 0.4)) if msi else np.nan,
+            "leukocyte_fraction": lf,
+        }
+    return pair, ctx
+
+
+# ── Feature builder ──────────────────────────────────────────────────────────
+class FeatureBuilder:
+    def __init__(self, sources: dict, cbio_pair: dict, cbio_ctx: dict, use_pubmed: bool = True):
+        self.s = sources
+        self.cbio_pair, self.cbio_ctx = cbio_pair, cbio_ctx
+        self.use_pubmed = use_pubmed
+        act = sources.get("chembl_activity")
+        self.chembl = {g: grp for g, grp in act.groupby("gene")} if act is not None else None
+        gw = sources.get("gwas")
+        self.gwas = {g: grp for g, grp in gw.groupby("gene")} if gw is not None else None
+
+    # intrinsic, target-level
+    @lru_cache(maxsize=None)
+    def target_intrinsic(self, gene: str) -> dict:
+        f = {}
+        dm = self.s.get("depmap")
+        if dm is not None and gene in dm.effect.columns:
+            col = dm.effect[gene].dropna()
+            f["depmap_pan_effect"] = float(col.mean())
+            f["depmap_common_essential_frac"] = float((col < -0.5).mean())
+        hpa = self.s.get("hpa")
+        if hpa is not None and gene in hpa.index:
+            row = hpa.loc[gene]
+            for k in ("hpa_tissue_distribution", "hpa_tissue_specificity", "hpa_cancer_specificity",
+                      "hpa_membrane", "hpa_secreted"):
+                f[k] = float(row[k]) if pd.notna(row[k]) else np.nan
+            rx = self.s.get("reactome")
+            if rx is not None and isinstance(row.get("uniprot"), str):
+                ids = [u.strip() for u in row["uniprot"].split(",")]
+                f["reactome_pathways_log"] = float(np.log1p(max((rx.get(u, 0) for u in ids), default=0)))
+        st = self.s.get("string")
+        if st is not None and gene in st.index:
+            f.update(st.loc[gene].to_dict())
+        cgc = self.s.get("cgc")
+        if cgc is not None:
+            f["cgc_member"] = float(gene in cgc)
+        return f
+
+    # intrinsic, pair-level
+    @lru_cache(maxsize=None)
+    def pair_intrinsic(self, gene: str, disease: str) -> dict:
+        f = dict(self.cbio_pair.get((gene, disease), {}))
+        dm, d = self.s.get("depmap"), DISEASE_BY_KEY.get(disease)
+        if dm is not None and d is not None and d.depmap_lineage and gene in dm.effect.columns:
+            mask = dm.models["OncotreeLineage"].eq(d.depmap_lineage)
+            if d.depmap_disease and "OncotreePrimaryDisease" in dm.models:
+                mask &= dm.models["OncotreePrimaryDisease"].fillna("").str.contains(d.depmap_disease, regex=True)
+            vals = dm.effect.loc[mask.values, gene].dropna()
+            if len(vals) >= 5:
+                pan = float(dm.effect[gene].mean())
+                f["depmap_lineage_effect"] = float(vals.mean())
+                f["depmap_lineage_dependent_frac"] = float((vals < -0.5).mean())
+                f["depmap_lineage_selectivity"] = pan - float(vals.mean())
+        return f
+
+    # time-bounded knowledge (everything strictly before start_year)
+    @lru_cache(maxsize=None)
+    def time_bounded(self, gene: str, disease: str, start_year: int) -> dict:
+        f = {}
+        if self.chembl is not None:
+            grp = self.chembl.get(gene)
+            if grp is not None:
+                prior = grp[(grp["year"] < start_year) & (grp["pchembl"] >= 6)]
+                f["chembl_potent_compounds_log"] = float(np.log1p(prior["molregno"].nunique()))
+                f["chembl_max_pchembl"] = float(prior["pchembl"].max()) if len(prior) else np.nan
+                f["chembl_history_years"] = float(start_year - prior["year"].min()) if len(prior) else 0.0
+            else:
+                f["chembl_potent_compounds_log"], f["chembl_history_years"] = 0.0, 0.0
+        if self.gwas is not None:
+            grp = self.gwas.get(gene)
+            d = DISEASE_BY_KEY.get(disease)
+            if grp is None:
+                f["gwas_cancer_hits_log"] = 0.0
+                f["gwas_disease_hits_log"] = 0.0 if d else np.nan
+            else:
+                prior = grp[grp["year"] < start_year]
+                f["gwas_cancer_hits_log"] = float(np.log1p(prior["is_cancer"].sum()))
+                f["gwas_disease_hits_log"] = (float(np.log1p(prior["trait"].str.contains(d.pattern, regex=True).sum()))
+                                              if d else np.nan)
+        if self.use_pubmed:
+            from clients import pubmed_count
+            gt = _gene_term(gene)
+            n_t = pubmed_count(gt, start_year)
+            f["pubmed_target_log"] = float(np.log1p(n_t)) if n_t is not None else np.nan
+            d = DISEASE_BY_KEY.get(disease)
+            if d is not None and d.pubmed:
+                pair_term = f"({gt}) AND ({d.pubmed})"
+                n_p = pubmed_count(pair_term, start_year)
+                n_r = pubmed_count(pair_term, start_year, since_year=start_year - 3)
+                f["pubmed_pair_log"] = float(np.log1p(n_p)) if n_p is not None else np.nan
+                f["pubmed_pair_recent_frac"] = (n_r / n_p) if (n_p and n_r is not None) else np.nan
+        return f
+
+    def trial_features(self, row) -> dict:
+        genes = [g for g in (row.get("drug_targets") or []) if g != "DNA"][:5]
+        disease, year = row["disease"], int(row["start_year"])
+        per_gene = [{**self.target_intrinsic(g), **self.pair_intrinsic(g, disease),
+                     **self.time_bounded(g, disease, year)} for g in genes]
+        f = {}
+        for k in GENE_LEVEL:
+            vals = [pg[k] for pg in per_gene if k in pg and pd.notna(pg[k])]
+            f[k] = float(np.mean(vals)) if vals else np.nan
+        f.update(self.cbio_ctx.get(disease, {}))
+        mod = row.get("modality") or "other"
+        f["modality_small_molecule"] = float(mod == "small_molecule")
+        f["modality_antibody"] = float(mod == "antibody")
+        f["modality_adc"] = float(mod == "adc")
+        f["modality_other"] = float(mod not in ("small_molecule", "antibody", "adc"))
+        f["n_targets"] = float(len(row.get("drug_targets") or []))
+        f.update(design_features(row))
+        f["knowledge_cutoff_year"] = year - 1
+        return f
+
+
+# ── Trial-design features (stage 2 only) ─────────────────────────────────────
+_EP = {
+    "endpoint_os": re.compile(r"overall survival|\bos\b", re.I),
+    "endpoint_pfs": re.compile(r"progression[\s-]free|\bpfs\b|event[\s-]free|disease[\s-]free|\befs\b|\bdfs\b", re.I),
+    "endpoint_response": re.compile(r"response|\borr\b|remission|\bpcr\b|pathologic(al)? complete", re.I),
 }
 
-BFS_WEIGHTS = {
-    "alteration_frequency": 0.30,      # PAIR-LEVEL (cancer-type specific)
-    "biomarker_directness": 0.20,
-    "biomarker_prevalence": 0.15,
-    "biomarker_clonality": 0.10,
-    "assay_precision": 0.10,
-    "lineage_specificity": 0.15,       # PAIR-LEVEL (how specific to this lineage)
-}
 
-MCS_WEIGHTS = {
-    "mechanistic_maturity": 0.20,
-    "perturbation_concordance": 0.20,
-    "pathway_evidence": 0.15,
-    "ot_literature": 0.15,
-    "pubmed_pair_count": 0.15,         # PAIR-LEVEL
-    "clinical_trial_pub_count": 0.15,  # PAIR-LEVEL
-}
+def design_features(row) -> dict:
+    """Registered design. Note: CT.gov records can be edited after the fact (outcome
+    switching); the history API should be used to recover the originally registered
+    primary outcome for the paper."""
+    outcomes = " ".join(row.get("primary_outcomes") or [])
+    arm_types = row.get("arm_types") or {}
+    f = {k: float(bool(rx.search(outcomes))) for k, rx in _EP.items()}
+    f.update({
+        "biomarker_selected": float(row.get("biomarker_selected", 0)),
+        "biomarker_matches_target": float(row.get("biomarker_matches_target", 0)),
+        "is_randomized": float(row.get("allocation") == "RANDOMIZED"),
+        "placebo_controlled": float("PLACEBO_COMPARATOR" in arm_types.values()),
+        "n_arms": float(row.get("n_arms") or 0),
+        "is_combination": float(row.get("is_combination", 0)),
+        "n_investigational_agents": float(row.get("n_investigational_agents", 0)),
+        "industry_sponsor": float(row.get("sponsor_class") == "INDUSTRY"),
+    })
+    return f
 
-TWS_WEIGHTS = {
-    "tumor_expression": 0.30,
-    "tumor_specificity": 0.25,
-    "normal_tissue_burden": 0.20,
-    "context_specificity": 0.15,
-    "ot_rna_expression": 0.10,        # PAIR-LEVEL
-}
 
-EMS_WEIGHTS = {
-    "human_study_fraction": 0.25,
-    "translational_study_fraction": 0.20,
-    "pubmed_pair_count": 0.20,         # PAIR-LEVEL
-    "pair_pub_acceleration": 0.20,     # PAIR-LEVEL
-    "literature_diversity": 0.15,
-}
-
-def _safe(v, default=0.0) -> float:
-    try:
-        f = float(v)
-        return f if np.isfinite(f) else default
-    except (TypeError, ValueError):
-        return default
-
-def _weighted_sum(row: dict, weights: dict) -> float:
-    total_w = sum(weights.values())
-    score = sum(weights[k] * _safe(row.get(k, 0)) for k in weights)
-    return score / total_w if total_w > 0 else 0.0
-
-# ── Per-trial raw feature extraction ─────────────────────────────────────────
-
-def compute_raw_features(trial: pd.Series, pair_data: dict, target_data: dict) -> dict:
-    """
-    Extract all raw features for a trial.
-
-    pair_data: dict keyed by (target_symbol, disease) → {ot_score, pubmed_count, ...}
-    target_data: dict keyed by target_symbol → {string_degree, chembl_tractability, ...}
-
-    Key v6 change: pair_data lookup uses BOTH target AND disease,
-    so different disease contexts get different feature values.
-    """
-    symbol = trial.get("primary_target", "UNKNOWN")
-    disease = trial.get("disease", "unknown")
-    modality = trial.get("modality", "unknown")
-    has_biomarker = bool(trial.get("has_biomarker", False))
-
-    # Look up data for this specific (target, disease) pair
-    pair_key = (symbol, disease)
-    pair = pair_data.get(pair_key, {})
-
-    # Fall back to the target-level data
-    tgt = target_data.get(symbol, {})
-
-    features = {}
-
-    # ── PAIR-LEVEL features (vary by target+disease combination) ──────────────
-    features["ot_overall_score"]       = _safe(pair.get("ot_overall_score", 0))
-    features["ot_genetic_association"] = _safe(pair.get("ot_genetic_association", 0))
-    features["ot_somatic_mutation"]    = _safe(pair.get("ot_somatic_mutation", 0))
-    features["ot_known_drug"]          = _safe(pair.get("ot_known_drug", 0))
-    features["ot_animal_model"]        = _safe(pair.get("ot_animal_model", 0))
-    features["ot_rna_expression"]      = _safe(pair.get("ot_rna_expression", 0))
-    features["ot_literature"]          = _safe(pair.get("ot_literature", 0))
-    features["pubmed_pair_count"]      = _safe(pair.get("pubmed_pair_count", 0))
-    features["clinical_trial_pub_count"] = _safe(pair.get("clinical_trial_pub_count", 0))
-    features["pair_pub_acceleration"]  = _safe(pair.get("pair_pub_acceleration", 0))
-    features["lineage_specificity"]    = _safe(pair.get("lineage_specificity", 0))
-    features["gwas_disease_specificity"] = _safe(pair.get("gwas_disease_specificity",
-                                               tgt.get("gwas_disease_specificity", 0)))
-
-    # cBioPortal pair-level (cancer-type specific alteration frequency)
-    has_cbio = bool(pair.get("has_real_cbio_data", False))
-    if has_cbio:
-        features["alteration_frequency"] = _safe(pair.get("alteration_frequency", 0))
-        features["co_alteration_burden"] = _safe(pair.get("co_alteration_burden", 0))
-        features["genomic_complexity"]   = _safe(pair.get("genomic_complexity", 0))
-    else:
-        # v6: Use NaN + indicator flag instead of median imputation
-        features["alteration_frequency"] = np.nan
-        features["co_alteration_burden"] = np.nan
-        features["genomic_complexity"]   = np.nan
-
-    # ── MISSINGNESS INDICATORS (v6: explicit flags instead of silent imputation) ──
-    features["ot_data_missing"]   = 0 if pair.get("has_real_ot_data", False) else 1
-    features["cbio_data_missing"] = 0 if has_cbio else 1
-    features["biomarker_missing"] = 0 if has_biomarker else 1
-
-    # ── TARGET-LEVEL features (same for all trials with same target) ───────────
-    # STRING network topology
-    features["network_degree"]           = _safe(tgt.get("network_degree", 0))
-    features["clustering_coefficient"]   = _safe(tgt.get("clustering_coefficient", 0))
-    features["betweenness_centrality"]   = _safe(tgt.get("betweenness_centrality", 0))
-
-    # ChEMBL druggability
-    features["tractability"]   = _safe(tgt.get("tractability", 0))
-    features["binding_evidence"] = _safe(tgt.get("binding_evidence", 0))
-    features["potency_proxy"]    = _safe(tgt.get("potency_proxy", 0))
-
-    # UniProt biology
-    features["mechanistic_maturity"] = _safe(tgt.get("mechanistic_maturity", 0))
-    features["druggability_tier"]    = _safe(tgt.get("druggability_tier", 0))
-    features["target_class"]         = _safe(tgt.get("target_class", 0))
-
-    # Reactome pathway membership
-    features["pathway_count"]              = _safe(tgt.get("pathway_count", 0))
-    features["pathway_evidence"]           = _safe(tgt.get("pathway_evidence", 0))
-    features["alternative_pathway_burden"] = _safe(tgt.get("alternative_pathway_burden", 0))
-
-    # GWAS (target-level)
-    features["gwas_association_count"] = _safe(tgt.get("gwas_association_count", 0))
-
-    # COSMIC
-    features["cosmic_census_member"] = _safe(tgt.get("cosmic_census_member", 0))
-    features["somatic_evidence"]     = _safe(tgt.get("somatic_evidence", 0))
-
-    # DepMap essentiality (NEW in v6)
-    features["depmap_chronos"]   = _safe(tgt.get("depmap_chronos", 0))
-    features["depmap_essential"] = _safe(tgt.get("depmap_essential", 0))
-    features["depmap_selective"] = _safe(tgt.get("depmap_selective", 0))
-
-    # HPA expression (now populated with real data via Ensembl ID fix)
-    features["tumor_expression"]    = _safe(tgt.get("tumor_expression", 0.4))
-    features["normal_tissue_burden"] = _safe(tgt.get("normal_tissue_burden", 0.5))
-    features["tumor_specificity"]   = _safe(tgt.get("tumor_specificity", 0.0))
-    features["expression_variability"] = _safe(tgt.get("expression_variability", 0.5))
-
-    # OmniPath
-    features["omnipath_degree"]     = _safe(tgt.get("omnipath_degree", 0))
-    features["omnipath_references"] = _safe(tgt.get("omnipath_references", 0))
-
-    # DGIdb
-    features["known_drug_count"]  = _safe(tgt.get("known_drug_count", 0))
-    features["interaction_score"] = _safe(tgt.get("interaction_score", 0))
-
-    # DisGeNET
-    features["disgenet_score"]         = _safe(tgt.get("disgenet_score", 0))
-    features["disgenet_disease_count"] = _safe(tgt.get("disgenet_disease_count", 0))
-
-    # ── TRIAL-LEVEL features (derived from trial metadata) ────────────────────
-    # Modality score
-    modality_map = {
-        "antibody": 0.8, "adc": 0.85, "bispecific": 0.85,
-        "small_molecule": 0.7, "cell_therapy": 0.75,
-        "gene_therapy": 0.7, "peptide": 0.6,
-        "vaccine": 0.5, "unknown": 0.3,
-    }
-    features["modality_score"] = modality_map.get(modality.lower(), 0.3)
-
-    # v7: explicit drug mapping flag
-    features["drug_is_mapped"] = 0.0 if symbol == "UNKNOWN" else 1.0
-
-    # v8: IO-specific features from clients_v8_additions
-    try:
-        from clients_v8_additions import get_io_features, compute_split_tds
-        io_feats = get_io_features(symbol)
-        tds_split = compute_split_tds(symbol, modality, features)
-        features.update(io_feats)
-        features.update(tds_split)
-    except Exception:
-        # Fallback if v8 additions not available
-        features["tmb_relevance"] = 0.2
-        features["pdl1_expression"] = 0.3
-        features["immune_infiltration"] = 0.4
-        features["io_mechanism"] = 0.0
-        features["is_io_target"] = 0.0
-        features["tds_small_molecule"] = features.get("tractability", 0)
-        features["tds_biologic"] = features.get("tumor_expression", 0.4)
-        features["tds_combined"] = features.get("tractability", 0)
-        features["drug_class"] = 0.0
-
-    # NOTE: is_io_trial, endpoint_type_num, completed_no_results are intentionally
-    # excluded from Stage 1 biology features. They are trial-level signals that
-    # correlate with permissive labels (IO drugs dominate approved indications),
-    # which would inflate Stage 1 AUC artificially. They are passed to Stage 2 only.
-
-    # Polypharmacology risk
-    features["polypharmacology_proxy"] = 1.0 - features["tractability"]
-
-    # Human study fraction (from PubMed pair data)
-    if features["pubmed_pair_count"] > 0:
-        features["human_study_fraction"] = min(
-            features["clinical_trial_pub_count"] / max(features["pubmed_pair_count"], 0.01),
-            1.0
-        )
-    else:
-        features["human_study_fraction"] = 0.0
-
-    features["translational_study_fraction"] = features["human_study_fraction"] * 0.7
-    features["perturbation_concordance"] = min(
-        features["pathway_evidence"] * 0.6 + features["ot_overall_score"] * 0.4, 1.0
-    )
-    features["target_disease_assoc"] = features["ot_overall_score"]
-
-    # Publication-derived features
-    features["pub_acceleration"] = features["pair_pub_acceleration"]
-    features["literature_diversity"] = min(
-        features["pubmed_pair_count"] * 0.5 + features["clinical_trial_pub_count"] * 0.5, 1.0
-    )
-
-    # Context specificity: how specific the target-disease link is
-    features["context_specificity"] = min(
-        features["lineage_specificity"] * 0.5 +
-        features["ot_genetic_association"] * 0.3 +
-        features["alteration_frequency"] * 0.2
-        if not np.isnan(features["alteration_frequency"]) else
-        features["lineage_specificity"] * 0.5 + features["ot_genetic_association"] * 0.5,
-        1.0
-    )
-
-    # Biomarker features
-    features["biomarker_directness"] = (
-        0.9 if has_biomarker and features["alteration_frequency"] > 0.05 else
-        0.5 if has_biomarker else
-        np.nan if not has_biomarker else 0.3
-    )
-    features["biomarker_prevalence"] = (
-        features["alteration_frequency"] if has_biomarker and not np.isnan(features["alteration_frequency"])
-        else (0.3 if has_biomarker else np.nan)
-    )
-    features["biomarker_clonality"] = 0.7 if has_biomarker else np.nan
-    features["assay_precision"] = 0.8 if has_biomarker else np.nan
-
-    return features
-
-# ── Composite score computation ───────────────────────────────────────────────
-
-def compute_composite_scores(features: dict) -> dict:
-    """Compute 6 composite dimension scores + overall BIOLOGY_SCORE."""
-    # Replace NaN with 0 for composite score computation
-    # (NaN handled by missingness indicators separately)
-    f = {k: (0.0 if (isinstance(v, float) and np.isnan(v)) else v)
-         for k, v in features.items()}
-
-    CDS = _weighted_sum(f, CDS_WEIGHTS)
-    TDS = _weighted_sum(f, TDS_WEIGHTS)
-    BFS = _weighted_sum(f, BFS_WEIGHTS)
-    MCS = _weighted_sum(f, MCS_WEIGHTS)
-    TWS = _weighted_sum(f, TWS_WEIGHTS)
-    EMS = _weighted_sum(f, EMS_WEIGHTS)
-
-    # Overall biology score — weighted combination of 6 dimensions
-    BIOLOGY_SCORE = (
-        0.25 * CDS +   # Clinical disease support (genetic evidence)
-        0.20 * TDS +   # Target druggability
-        0.20 * MCS +   # Mechanistic coherence
-        0.15 * TWS +   # Therapeutic window
-        0.10 * BFS +   # Biomarker fidelity
-        0.10 * EMS     # Evidence maturity
-    )
-
-    return {
-        "CDS": round(CDS, 4),
-        "TDS": round(TDS, 4),
-        "BFS": round(BFS, 4),
-        "MCS": round(MCS, 4),
-        "TWS": round(TWS, 4),
-        "EMS": round(EMS, 4),
-        "BIOLOGY_SCORE": round(BIOLOGY_SCORE, 4),
-    }
-
-# ── Main feature computation pipeline ────────────────────────────────────────
-
-def compute_all_features(trials_df: pd.DataFrame,
-                          pair_data: dict,
-                          target_data: dict) -> pd.DataFrame:
-    """
-    Compute raw features + composite scores for all trials.
-    Returns trials_df with feature columns appended.
-    """
-    all_rows = []
-    for _, trial in tqdm(trials_df.iterrows(), total=len(trials_df),
-                         desc="Computing features"):
-        raw_features = compute_raw_features(trial, pair_data, target_data)
-        composite = compute_composite_scores(raw_features)
-        all_rows.append({**raw_features, **composite})
-
-    feature_df = pd.DataFrame(all_rows, index=trials_df.index)
-    result = pd.concat([trials_df, feature_df], axis=1)
-
-    # ── Missingness report ─────────────────────────────────────────────────────
-    n = len(result)
-    raw_cols = [c for c in feature_df.columns if c not in ["CDS", "TDS", "BFS", "MCS", "TWS", "EMS", "BIOLOGY_SCORE"]]
-
-    print(f"\n  Features: {len(raw_cols)} raw + 7 composite for {n} trials")
-    print(f"  has_real_ot_data   : {(result.get('ot_data_missing', pd.Series([1]*n)) == 0).sum()}/{n} ({(result.get('ot_data_missing', pd.Series([1]*n)) == 0).mean():.1%})")
-    print(f"  has_real_cbio_data : {(result.get('cbio_data_missing', pd.Series([1]*n)) == 0).sum()}/{n} ({(result.get('cbio_data_missing', pd.Series([1]*n)) == 0).mean():.1%})")
-    print(f"  has_biomarker      : {(result.get('biomarker_missing', pd.Series([1]*n)) == 0).sum()}/{n} ({(result.get('biomarker_missing', pd.Series([1]*n)) == 0).mean():.1%})")
-
-    # NaN counts (honest missingness)
-    nan_cols = [(c, feature_df[c].isna().sum()) for c in raw_cols
-                if feature_df[c].isna().sum() > 0]
-    if nan_cols:
-        print(f"  Missing (NaN) values — explicit, not median-imputed:")
-        for col, cnt in sorted(nan_cols, key=lambda x: -x[1])[:10]:
-            print(f"    {col:<40} {cnt} ({cnt/n:.1%})")
-
-    log.info(f"Features computed for {n} trials, {len(raw_cols)} raw features")
-    return result
-
-# ── Feature set builder for modeling ─────────────────────────────────────────
-
-def build_feature_sets(df: pd.DataFrame, feature_cols: list[str]) -> dict:
-    """
-    Build three feature sets for modeling.
-
-    v7 CHANGE: "composite" now includes pair-level features alongside composite
-    scores. Previously composite = only 7 scores, which meant pair-level features
-    had 0% importance because they never reached the model in the primary feature set.
-
-    - composite: 7 composite scores + key pair-level + missingness flags (PRIMARY)
-    - raw: all raw features
-    - hybrid: composite + all pair-level features
-    """
-    composite_cols = ["CDS", "TDS", "BFS", "MCS", "TWS", "EMS", "BIOLOGY_SCORE"]
-
-    # v7: pair-level features now included in composite set
-    # These vary per (target, disease) pair and capture cancer-specific signal
-    key_pair_cols = [
-        "ot_overall_score", "ot_genetic_association", "ot_somatic_mutation",
-        "ot_known_drug", "ot_rna_expression", "ot_literature",
-        "pubmed_pair_count", "clinical_trial_pub_count", "pair_pub_acceleration",
-        "lineage_specificity",
-        "depmap_essential", "depmap_chronos", "cosmic_census_member",
-        "gwas_association_count", "disgenet_score",
-        "tractability", "binding_evidence", "potency_proxy",
-        "tumor_expression", "tumor_specificity", "normal_tissue_burden",
-        "pathway_evidence", "modality_score",
-        # Missingness indicators
-        "ot_data_missing", "cbio_data_missing", "biomarker_missing",
-        # v7: drug mapping flag — only include once
-        # (also in raw features, deduplicated by _prep)
-    ]
-
-    available_composite = [c for c in composite_cols if c in df.columns]
-    available_raw = [c for c in feature_cols if c in df.columns]
-    available_pair = [c for c in key_pair_cols if c in df.columns]
-    # Primary feature set: composite scores + pair-level features
-    available_enhanced = list(dict.fromkeys(available_composite + available_pair))
-
-    def _prep(X: pd.DataFrame) -> pd.DataFrame:
-        # Deduplicate columns — LightGBM crashes on duplicate column names
-        X = X.loc[:, ~X.columns.duplicated()]
-        return X.fillna(-1)
-
-    return {
-        "composite": _prep(df[available_enhanced]),
-        "raw": _prep(df[list(dict.fromkeys(available_raw))]),
-        "hybrid": _prep(df[available_enhanced]),
-    }
+def compute_features(df: pd.DataFrame, sources: dict, use_pubmed: bool = True,
+                     use_cbio: bool = True) -> pd.DataFrame:
+    genes = sorted({g for ts in df["drug_targets"] for g in ts if g != "DNA"})
+    diseases = sorted(df["disease"].unique())
+    cbio_pair, cbio_ctx = ({}, {})
+    if use_cbio:
+        try:
+            cbio_pair, cbio_ctx = precompute_cbio(genes, diseases, sources.get("thorsson"))
+        except Exception as exc:  # noqa: BLE001
+            log.error(f"cBioPortal features failed: {exc}; TCGA features will be NaN")
+    fb = FeatureBuilder(sources, cbio_pair, cbio_ctx, use_pubmed=use_pubmed)
+    rows = [fb.trial_features(r) for _, r in tqdm(df.iterrows(), total=len(df), desc="Features")]
+    feats = pd.DataFrame(rows, index=df.index)
+    for k in FEATURE_REGISTRY:
+        if k not in feats.columns and FEATURE_REGISTRY[k]["leakage_class"] != "outcome_proxy":
+            feats[k] = np.nan
+    miss = feats[[c for c in feats.columns if c in FEATURE_REGISTRY
+                  and FEATURE_REGISTRY[c]["leakage_class"] != TRIAL_DESIGN]].isna().mean().sort_values(ascending=False)
+    log.info(f"Feature missingness (top):\n{miss.head(15).round(3).to_string()}")
+    return feats
