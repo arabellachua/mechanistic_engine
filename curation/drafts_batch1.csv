@@ -1,0 +1,298 @@
+nct_id,verify_next,outcome_label,evidence_source,evidence_text,evidence_date,confidence,reason_if_unknown,notes,reviewer,review_date,title,phase,status,why_stopped,start_date,primary_completion_date,results_first_posted,conditions,allocation,arms,n_arms_record,interventions,primary_outcomes,has_results,primary_results,result_refs,inclusion_criteria,ctgov_url,history_url,n_pubmed_citing
+NCT00494481,Confirm PMID (search hit 20830502) and copy it into evidence_source.,0,publication:doi 10.1007/s10637-010-9538-8 (Invest New Drugs),"Progression events 24/35 vandetanib vs 18/29 placebo; HR 1.19 (two-sided 80% CI 0.79–1.81), P=0.59. 'Clinical benefit was not different to that observed with placebo plus docetaxel.'",2010,high,,"Randomised, placebo-controlled; HR>1 = numerically worse on vandetanib.",Claude draft — Arabella to verify,2026-11-09,"A Phase II, Double-blind, Placebo Controlled, Randomized Study to Assess the Efficacy and Safety of ZD6474 in Combination With Docetaxel (Taxotere™) vs Docetaxel Alone as 2nd Line Treatment for Advanced Breast Cancer (ABC).",PHASE2,COMPLETED,,2006-01,2007-06,2011-05-24,Advanced Breast Cancer,RANDOMIZED,"1 [PLACEBO_COMPARATOR]
+2 [EXPERIMENTAL]",2,"Vandetanib (ZD6474) [DRUG] (aka ZACTIMA™) -> 2
+Docetaxel [DRUG] (aka Taxotere®) -> 1, 2",Number of Patients With a Disease Progression Event (time frame: RECIST tumour assessments carried out at screening (within 3 weeks before the 1st dose) and then as per site clinical practice until objective progression. The only additional mandatory RECIST assessment is at the point of data cut-off) — Number of patients with objective disease progression or death (by any cause in the absence of objective progression),True,"[Number of Patients With a Disease Progression Event] NUMBER Participants
+   Vandetanib Plus Docetaxel: 24; Placebo Plus Docetaxel: 18",,"Inclusion Criteria:
+
+* Females with histological/cytological confirmation of breast cancer.
+* Subjects with a measurable lesion or bone lesions",https://clinicaltrials.gov/study/NCT00494481,https://clinicaltrials.gov/study/NCT00494481?tab=history,0
+NCT01057017,Agree exclusion with Tianze.,EXCLUDE,,,,,"Primary endpoint is toxicity (safety), not efficacy; terminated for 'possible lack of efficacy'.",Out of scope for label_primary.,Claude draft — Arabella to verify,2026-11-09,Panitumumab and Bevacizumab Maintenance After First-Line FOLFOX-Bevacizumab for Patients With Advanced Colorectal Cancer With Wild-Type Ras,PHASE2,TERMINATED,possible lack of efficacy,2010-01,2011-04,2013-11-04,Colorectal Cancer,,intervention [EXPERIMENTAL],1,"intervention [BIOLOGICAL] (aka Bevacizumab: 7.5mg/kg, IV over 30-90 minutes every 3 weeks until disease progression., Panitumumab, Dose Level 1: 6mg/kg over 60-120 minutes every 3 weeks until disease progression, Dose Level 2: 9mg/kg over 60-120 minutes every 3 weeks until disease progression) -> intervention","Number of Patients With Toxicity to Combination of Panitumumab and Bevacizumab (time frame: every 3 weeks until patient comes off study (progressive disease), for up to 2 years) — To determine the safety of every 3 week panitumumab and bevacizumab as maintenance therapy for patients with metastatic colorectal cancer. Use of CTCAE version 3",True,"[Number of Patients With Toxicity to Combination of Panitumumab and Bevacizumab] NUMBER participants
+   Panitumumab and Bevacizumab: 1",,"Inclusion Criteria:
+
+1. Histologically or pathologically confirmed advanced colorectal cancer who received FOLFOX/bevacizumab for first-line treatment of metastatic disease.
+2. Patients must not have had disease progression while receiving a minimum of 6 treatments of FOLFOX/bevacizumab. Patients with stable or responding disease on FOLFOX/bevacizumab are eligible. Bevacizumab does not need to be administered with all cycles of FOLFOX.
+3. At least 3 weeks since prior FOLFOX/bevacizumab.
+4. Wild type ras
+5. No potentially curative treatment option.
+6. ECOG performance status 0-1
+7. Age\>18, not pregnant or breast-feeding
+8. Required entry laboratory parameters within 14 days of study entry: Granulocytes ≥ 1500/µl; platelet count ≥ 100,000/µl, Creatinine ≤ 2.0 mg/dl, Bilirubin ≤ 1.5 x upper limit of normal, AST ≤ 3 x upper limit of normal (or ≤ 5 x upper limit of normal for patients with liver metastases), Magnesium \> lower limit of normal
+9. Life expectancy of at least 16 weeks
+10. Must not have uncontrolled severe, intercurrent illness.
+11. No chemotherapy or radiation therapy within last 3 weeks
+12. No concurrent anticancer therapy.
+13. Signed study-specific consent form prior to study entry",https://clinicaltrials.gov/study/NCT01057017,https://clinicaltrials.gov/study/NCT01057017?tab=history,0
+NCT01492088,Replace with a v9-cohort trial.,EXCLUDE,,,,,Phase 1/2; v9 excludes Phase 1/2 (EXCLUDE_PHASE1_2). Primary = Phase 1 safety.,,Claude draft — Arabella to verify,2026-11-09,A Phase 1/2 Study of Brentuximab Vedotin (SGN-35) in Pediatric Patients With Relapsed or Refractory Systemic Anaplastic Large-Cell Lymphoma or Hodgkin Lymphoma,"PHASE1, PHASE2",COMPLETED,,2012-04-16,2016-10-12,2017-05-15,Relapsed or Refractory Hodgkin Lymphoma; Relapsed or Refractory Anaplastic Large-cell Lymphoma,NON_RANDOMIZED,"Brentuximab vedotin: Phase 1 [EXPERIMENTAL]
+Brentuximab vedotin: Phase 2 [EXPERIMENTAL]",2,"Brentuximab vedotin [DRUG] (aka SGN-35, ADCETRIS) -> Brentuximab vedotin: Phase 1, Brentuximab vedotin: Phase 2","Number of Participants With Adverse Events (AEs) and Serious Adverse Events (SAEs) (Phase 1) (time frame: From the first dose through 30 days after the last dose of study medication (Up to 15 months)) — An Adverse Event (AE) is defined as any untoward medical occurrence in a clinical investigation participant administered a drug; it does not necessarily have to have a causal relationship with this treatment. A Serious Adverse Event (SAE) is any experience that suggests a significant hazard, contraindication, side effect or precaution that: results in death, is life-threatening, required in-patient hospitalization or prolongation of existing hospitalization, results in persistent or significant disability/incapacity, is a congenital anomaly/birth defect or is medically significant. A treatment-emergent adverse event (TEAE) is defined as an adverse event with an onset that occurs after receiving study drug. AE severity was graded according to National Cancer Institute Common Terminology Criteria for Adverse Events (NCI CTCAE) version 4.03.
+Number of Participants With Abnormal Clinical Laboratory Values Reported as AEs (Phase 1) (time frame: From the first dose through 30 days after the last dose of study medication (Up to 15 months)) — Abnormal clinical laboratory values (serum chemistry and hematology) were reported as AEs if they were considered by the investigator to be a clinically significant change from Baseline or led to premature discontinuation of study treatment, dose modification, or other therapeutic intervention.
+Number of Participants With Clinically Significant Vital Signs Values Reported as AEs (Phase 1) (time frame: From the first dose through 30 days after the last dose of study medication (Up to 15 months)) — Vital signs measurements included supine (after 3-5 minutes in this position) and standing (after 3-5 minutes in this position) measurements of diastolic and systolic blood pressure, heart rate, and oral temperature.
+Antibody-drug Conjugate (ADC) Serum Concentrations (Phase 1) (time frame: Cycle 1 and 8 pre-dose and 5 minutes, 24, 48, 96 and 312 hours post-dose; Cycle 2 pre-dose, 5 minutes and 24, 48 and 96 hours post-dose; Cycle 3 to 16 pre-dose and 5 minutes post-dose) — Blood samples were collected and tested for serum concentrations of brentuximab vedotin antibody-drug conjugate.
+Serum Concentration of Total Antibodies (Conjugated and Unconjugated) (Phase 1) (time frame: Cycle 1 and 8 pre-dose and 5 minutes, 24, 48, 96 and 312 hours post-dose; Cycle 2 pre-dose, 5 minutes and 24, 48 and 96 hours post-dose; Cycle 3 to 16 pre-dose and 5 minutes post-dose) — Blood samples were collected and tested for conjugated and unconjugated antibodies.
+Monomethyl Auristatin E (MMAE) Plasma Concentrations (Phase 1) (time frame: Cycle 1 and 8 pre-dose and 5 minutes, 24, 48, 96 and 312 hours post-dose; Cycle 2 pre-dose, 5 minutes and 24, 48 and 96 hours post-dose; Cycle 3 to 16 pre-dose and 5 minutes post-dose) — Blood samples were collected and tested for MMAE plasma concentrations.
+Overall Response Rate (ORR) (Phase 1 and 2) (time frame: Cycles 2, 4, 7, 10, 13 and 16 (21-day cycles) until disease progression, death or end of treatment (EOT) (Up to 15 months)) — Overall response rate is defined as the percentage of participants with complete remission (CR) or partial remission (PR) as assessed by an independent review facility (IRF) using International Working Group (IWG) Revised Response Criteria for Malignant Lymphoma. CR is defined as the disappearance of all evidence of disease and PR is defined as regression of measurable disease and no new sites.",True,"[Number of Participants With Adverse Events (AEs) and Serious Adverse Events (SAEs) (Phase 1)] COUNT_OF_PARTICIPANTS Participants
+   TEAE: Brentuximab Vedotin 1.4 mg/kg: Phase 1: 3; Brentuximab Vedotin 1.8 mg/kg: Phase 1: 9
+   SAE: Brentuximab Vedotin 1.4 mg/kg: Phase 1: 0; Brentuximab Vedotin 1.8 mg/kg: Phase 1: 4
+[Number of Participants With Abnormal Clinical Laboratory Values Reported as AEs (Phase 1)] COUNT_OF_PARTICIPANTS Participants
+   Gamma-glutamyltransferase increased: Brentuximab Vedotin 1.4 mg/kg: Phase 1: 0; Brentuximab Vedotin 1.8 mg/kg: Phase 1: 1
+   Transaminases increased: Brentuximab Vedotin 1.4 mg/kg: Phase 1: 0; Brentuximab Vedotin 1.8 mg/kg: Phase 1: 1
+   Lymphocyte count decreased: Brentuximab Vedotin 1.4 mg/kg: Phase 1: 1; Brentuximab Vedotin 1.8 mg/kg: Phase 1: 1
+   Neutrophil count decreased: Brentuximab Vedotin 1.4 mg/kg: Phase 1: 0; Brentuximab Vedotin 1.8 mg/kg: Phase 1: 1
+   Blood bicarbonate decreased: Brentuximab Vedotin 1.4 mg/kg: Phase 1: 0; Brentuximab Vedotin 1.8 mg/kg: Phase 1: 1
+   Weight decreased: Brentuximab Vedotin 1.4 mg/kg: Phase 1: 0; Brentuximab Vedotin 1.8 mg/kg: Phase 1: 1
+   Hypocalaemia: Brentuximab Vedotin 1.4 mg/kg: Phase 1: 0; Brentuximab Vedotin 1.8 mg/kg: Phase 1: 2
+   Hyperuricaemia: Brentuximab Vedotin 1.4 mg/kg: Phase 1: 0; Brentuximab Vedotin 1.8 mg/kg: Phase 1: 1
+[Number of Participants With Clinically Significant Vital Signs Values Reported as AEs (Phase 1)] COUNT_OF_PARTICIPANTS Participants
+   Brentuximab Vedotin 1.4 mg/kg: Phase 1: 0; Brentuximab Vedotin 1.8 mg/kg: Phase 1: 0
+[Antibody-drug Conjugate (ADC) Serum Concentrations (Phase 1)]
+[Serum Concentration of Total Antibodies (Conjugated and Unconjugated) (Phase 1)]
+[Monomethyl Auristatin E (MMAE) Plasma Concentrations (Phase 1)]
+[Overall Response Rate (ORR) (Phase 1 and 2)] NUMBER percentage of participants
+   Brentuximab Vedotin 1.4 mg/kg: Phase 1: 0 (0–71); Brentuximab Vedotin 1.8 mg/kg: Phase 1 and 2 r/r HL Only: 47 (21–73); Brentuximab Vedotin 1.8 mg/kg: Phase 1 and 2 r/r sALCL Only: 53 (28–77)",17242396,"Inclusion Criteria:
+
+* Male or female participants aged 2 to \<18 years (5 to \<18 years for Hodgkin lymphoma \[HL\])
+* Diagnosis of systemic anaplastic large-cell lymphoma (sALCL), or HL for which standard, curative, life-prolonging, or palliative treatment does not exist or is no longer effective
+* Participants with sALCL must have documented anaplastic lymphoma kinase (ALK) status and must be beyond first remission or refractory to front-line chemotherapy
+* Participants diagnosed with any relapsed or refractory CD30+ hematologic malignancy (e.g., primary mediastinal B-cell lymphoma) may be included in phase 1 of the study
+* Participants with HL must be in their second of later relapse, have failed systemic chemotherapy either as induction therapy for advanced stage disease or salvage therapy, and were ineligible for, refused, or previously received a stem cell transplant
+* Performance score ≥ 60 from Lansky Play Performance Scale if ≤16 years
+* Negative pregnancy test
+* Fertile Participants must use 2 effective methods of contraception prior to and through 6 months after the last dose of the study drug",https://clinicaltrials.gov/study/NCT01492088,https://clinicaltrials.gov/study/NCT01492088?tab=history,2
+NCT00284154,"If full text gives the null rate and decision rule, check it.",1,publication:20521355,"Target: 20% ORR in platinum-sensitive patients. Observed ORR 22.2% (95% CI 9–42) in relapse-sensitive; 19.6% (10–33) overall, N=51. Authors: 'Additional study ... is indicated.'",2010,medium,,"Met target by point estimate; null rate not stated in abstract, so formal significance unknown.",Claude draft — Arabella to verify,2026-11-09,A Phase II Trial of VInflunine in the Treatment of Patients With Relapsed Extensive Small Cell Lung Cancer,PHASE2,COMPLETED,,2006-01,2009-05,2013-03-13,"Carcinoma, Small Cell; Lung Cancer",,Intervention [EXPERIMENTAL],1,Vinflunine [DRUG] (aka Javlor) -> Intervention,"Overall Response Rate (ORR), the Percentage of Patients Who Experience an Objective Benefit From Treatment (time frame: 18 months) — Overall response rate is the percentage of patients with complete response or partial response per RECIST v.1 Criteria. Complete response (CR) = Disappearance of all target lesions, disappearance of all nontarget lesions for at least 4 weeks. Partial Response (PR) = At least a 30% decrease in the sum of the longest diameter of target lesions, taking as reference the baseline sum of longest diameters. The final response criteria assigned represented the best response obtained during treatment.",True,"[Overall Response Rate (ORR), the Percentage of Patients Who Experience an Objective Benefit From Treatment] NUMBER percentage of participants
+   Vinflunine: 19.6 (10–33)",20521355,"Inclusion Criteria:
+
+* Small cell lung cancer with progression after one previous chemotherapy or chemotherapy/radiation therapy regimen
+* Measurable or evaluable disease
+* Able to perform activities of daily living with minimal assistance
+* Adequate hematological, liver, and kidney function
+* Must give written informed consent prior to entry",https://clinicaltrials.gov/study/NCT00284154,https://clinicaltrials.gov/study/NCT00284154?tab=history,0
+NCT01004250,Optional: check CT.gov 'Documents' tab for a SAP.,U,ctgov_record,Single-arm; median PFS 6.9 mo (5.7–8.3). No target PFS in record; no linked publication found.,2013-12-25,medium,"No pre-specified threshold found (record, PubMed search).",,Claude draft — Arabella to verify,2026-11-09,"A Single-Arm, Phase 2 Trial of Pemetrexed, Cisplatin,and Bevacizumab as Induction, Followed by Pemetrexed and Bevacizumab as Maintenance, in First-Line Treatment of Nonsquamous Advanced NSCLC",PHASE2,COMPLETED,,2009-10,2012-11,2013-12-25,Non-Small Cell Lung Cancer,,Study Treatment [EXPERIMENTAL],1,"Pemetrexed [DRUG] (aka Alimta, LY231514) -> Study Treatment
+Cisplatin [DRUG] -> Study Treatment
+Bevacizumab [DRUG] -> Study Treatment","Progression-Free Survival (time frame: From enrollment to the first date of objectively determined Progressive Disease (PD) or death from any cause (every other cycle during study treatment and then every 6 weeks during follow-up period)(Baseline up to 36.1 Months)) — Progression-Free Survival (PFS) is defined as the time from the date of study enrollment to the first date of objectively determined PD or death from any cause. PD is defined using Response Evaluation Criteria in Solid Tumours (RECIST) Guidelines (Version 1.0), as at least a 20% increase in the sum of longest diameter (LD) of target lesions, taking as references the smallest sum LD recorded since the treatment started or the appearance of 1 or more new lesions. For participants not known to have died as of the data cut-off date and who do not have objective PD, PFS will be censored at the date of the last objective progression-free disease assessment. For participants who receive subsequent systemic anticancer therapy, PFS will be censored at the date of the last objective progression-free disease assessment prior to post-discontinuation systemic therapy.",True,"[Progression-Free Survival] MEDIAN Months
+   Study Treatment: 6.9 (5.7–8.3)",,"Inclusion Criteria:
+
+* Histological or cytological diagnosis of nonsquamous Stage IIIB or Stage IV NSCLC that is not amenable to curative therapy
+* Eastern Cooperative Oncology Group (ECOG) Performance Status of 0 or 1
+* At least 1 unidimensionally measurable lesion meeting the Response Evaluation Criteria In Solid Tumors (RECIST) criteria
+* Adequate organ function, including the following:
+
+  * Adequate bone marrow reserve: absolute neutrophil (segmented and bands) count (ANC) ≥1.5 x 10\^9 per Liter (10\^9/L), platelets ≥100 x 10\^9/L, and hemoglobin ≥10 gram per deciliter (g/dL)
+  * Hepatic: bilirubin ≤1.5 times the upper limit of normal (ULN); alkaline phosphatase (AP), aspartate aminotransferase (AST), and alanine aminotransferase (ALT) ≤3.0 x ULN (AP, AST, and ALT ≤5 x ULN is acceptable if liver has tumor involvement)
+  * Renal: calculated creatinine clearance (CrCl) ≥45 milliliter per minute (mL/min) based on the original weight-based Cockcroft and Gault formula, and serum creatinine ≤1.5 x ULN
+  * At the time of enrollment, if the urinalysis dipstick result is ≥2+ for protein, a 24-hour urine collection should be taken. In these cases, participants must have ≤1g protein/24 hours to be eligible for study participation
+* Participants must sign an Informed Consent Document (ICD)",https://clinicaltrials.gov/study/NCT01004250,https://clinicaltrials.gov/study/NCT01004250?tab=history,0
+NCT01135498,Check PMID 23788755 for a target PFS.,U,ctgov_record,Single-arm; median PFS 9.18 mo (7.86–11.87); 61.1% progressed or died. No target in record.,2015-02-06,medium,No pre-specified threshold found.,Search hit PMID 23788755 may be the paper (unverified).,Claude draft — Arabella to verify,2026-11-09,"An Open-label Study of the Effect of First-line Treatment With Avastin+Xelox, Followed by Avastin+Tarceva, on Progression-free Survival in Patients With Metastatic Colorectal Cancer",PHASE2,COMPLETED,,2006-11,2010-04,2015-02-06,Colorectal Cancer,NON_RANDOMIZED,1 [EXPERIMENTAL],1,"bevacizumab [Avastin] [DRUG] -> 1
+eloxatin [DRUG] -> 1
+capecitabine [Xeloda] [DRUG] -> 1
+erlotinib [Tarceva] [DRUG] -> 1","Percentage of Participants With Disease Progression or Death (time frame: Start of study to approximately 4 years) — Disease progression was defined according to Response Evaluation Criteria in Solid Tumors (RECIST) as a 20 percent (%) increase in the sum of the longest diameter of target lesions, or a measureable increase in a non-target lesion, or the appearance of new lesions.
+Progression-Free Survival (time frame: From study start up to approximately 4 years) — Progression-free survival was defined as the time from the date of informed consent until the date when the participant had progression of disease or died from disease progression. Participants who received surgical treatment after treatment ended were censored at the time of surgery. Participants who left the study for reasons other than progression of the disease were censored on the date on which they received a later antitumor therapy (with the same or different drugs, radiotherapy, or surgery).",True,"[Percentage of Participants With Disease Progression or Death] NUMBER percentage of participants
+   Bevacizumab+Oxaliplatin+Capecitabine/Bevacizumab+Erlotinib: 61.1
+[Progression-Free Survival] MEDIAN months
+   Bevacizumab+Oxaliplatin+Capecitabine/Bevacizumab+Erlotinib: 9.18 (7.86–11.87)",,"Inclusion Criteria:
+
+* adult patients, \>=18 years of age;
+* adenocarcinoma of colon or rectum, with metastatic disease;
+* \>=1 measurable lesion.",https://clinicaltrials.gov/study/NCT01135498,https://clinicaltrials.gov/study/NCT01135498?tab=history,0
+NCT00866047,Find the null ORR in the JCO full text to raise confidence.,1,publication:22614995,"ORR 86% (95% CI 74.6–93.9) by independent review (CR 57%, PR 29%), N=58. Sponsor release: primary endpoint achieved.",2012,medium,,Pre-specified null ORR not found in abstract/press; CI lower bound far above any plausible null.,Claude draft — Arabella to verify,2026-11-09,A Phase 2 Study of SGN-35 in Treatment of Patients With Relapsed or Refractory Systemic Anaplastic Large Cell Lymphoma (ALCL),PHASE2,COMPLETED,,2009-03,2010-08,2011-10-26,"Lymphoma, Large-Cell, Anaplastic; Lymphoma, Non-Hodgkin",,Brentuximab vedotin [EXPERIMENTAL],1,"brentuximab vedotin [DRUG] (aka SGN-35, ADCETRIS) -> Brentuximab vedotin","Objective Response Rate by Independent Review Group (time frame: up to 12 months) — Percentage of participants who achieved a best response of complete remission (CR, disappearance of all evidence of disease) or partial remission (PR, regression of greater than or equal to 50% of measurable disease and no new sites) per Cheson 2007 Revised Response Criteria for Malignant Lymphoma.",True,"[Objective Response Rate by Independent Review Group] NUMBER percent of participants
+   Brentuximab Vedotin: 86 (74.6–93.9)",22614995,"Inclusion Criteria:
+
+* Patients with relapsed or refractory systemic ALCL who have previously received front line chemotherapy.
+* Documented anaplastic lymphoma kinase (ALK) status.
+* Histologically-confirmed CD30-positive disease; tissue from the most recent post diagnostic biopsy of relapsed/refractory disease must be available for confirmation of CD30 expression via slides or tumor block.
+* Fluorodeoxyglucose-avid and measurable disease of at least 1.5 cm as documented by both positron emission tomography and spiral computed tomography.
+* Received any previous autologous stem cell transplant at least 12 weeks (3 months) prior.
+* At US sites, patients greater than or equal to 12 years of age may be enrolled. At non-US sites, patients must be greater than or equal to 18 years of age.",https://clinicaltrials.gov/study/NCT00866047,https://clinicaltrials.gov/study/NCT00866047?tab=history,3
+NCT02429375,Replace with a v9-cohort trial.,EXCLUDE,,,,,Phase 1b/2; primary endpoint is MTD (dose-finding).,,Claude draft — Arabella to verify,2026-11-09,Phase IB/II Study of Mocetinostat (MGCD0103) Plus Brentuximab Vedotin (SGN-35) in Patients With Relapsed or Refractory Hodgkin Lymphoma,"PHASE1, PHASE2",COMPLETED,,2015-04-22,2021-02-17,2022-05-12,Hodgkin Lymphoma,,Mocetinostat (MGCD0103) Plus Brentuximab Vedotin (SGN-35) [EXPERIMENTAL],1,"Mocetinostat Plus Brentuximab Vedotin [DRUG] (aka MGCD0103, SGN-35) -> Mocetinostat (MGCD0103) Plus Brentuximab Vedotin (SGN-35)",Maximum Tolerated Dose (MTD) (time frame: 1 year) — For this objective the standard 3+3 dose-escalation scheme will be used. Patients will be accrued to the study in cohorts of 3 (starting with dose level 1). For any given dose an initial cohort of 3 patients will be treated at that dose. The dose level will be escalated if none of the 3 patients exhibits any DLT,True,[Maximum Tolerated Dose (MTD)],,"Inclusion Criteria:
+
+* Patients must have histologically confirmed CD30 positive relapsed or refractory Hodgkin lymphoma
+* Measurable disease, as defined by the International Harmonization Project.14
+* Patients must have failed autologous stem cell transplant or at least 2 prior cytotoxic regimens for Hodgkin lymphoma. Patients who have failed only 1 prior cytotoxic regimen for Hodgkin lymphoma are permitted to enroll as long as they are not eligible for autologous stem cell transplant.
+* Age ≥18
+* ECOG performance status ≤2 (Karnofsky ≥60%)
+* Patients must have normal organ and marrow function as defined below:
+
+  * absolute neutrophil count ≥1,000/mcL
+  * platelets ≥75,000/mcL
+  * total bilirubin within normal institutional limits or \< 3x the upper limit of normal in patients with Gilbert's disease
+  * AST(SGOT)/ALT(SGPT) ≤2.5 × institutional upper limit of normal
+  * Creatinine ≤1.5 x institutional upper limit of normal OR creatinine clearance ≥40 mL/min/1.73 m2 for patients with creatinine levels above institutional normal.
+* QTc ≤ 500 ms
+* The effects of mocetinostat and brentuximab vedotin on the developing human fetus are potentially harmful. For this reason, women of child-bearing potential and men must agree to use adequate contraception (hormonal or barrier method of birth control; abstinence) prior to study entry and for the duration of study participation. Should a woman become pregnant or suspect she is pregnant while she or her partner is participating in this study, she should inform her treating physician immediately. Men treated or enrolled on this protocol must also agree to use adequate contraception prior to the study, for the duration of study participation, and 4 months after completion of mocetinostat and brentuximab vedotin administration.
+* Patients with known HIV infection must have CD4 count greater than 200.",https://clinicaltrials.gov/study/NCT02429375,https://clinicaltrials.gov/study/NCT02429375?tab=history,0
+NCT00408603,Open CT.gov results for N per dose and any SAP.,U,ctgov_results,14 responders across 3 dose groups (7/4/3); interim report: 1 CR + 4 PR among 35 evaluable. No target ORR found.,2017-06-28,low,No pre-specified threshold found; denominators not checked.,,Claude draft — Arabella to verify,2026-11-09,"A Phase 2 Open-Label, Multicenter Study of SNS-595 Injection in Patients With Platinum-Resistant Ovarian Cancer",PHASE2,COMPLETED,,2006-12-20,2010-06-09,2017-06-28,Epithelial Ovarian Cancer,,All study patients [EXPERIMENTAL],1,"Voreloxin Injection [DRUG] (aka SNS-595, vosaroxin, Qinprezo) -> All study patients","Overall Response Rate (CR+PR) Per Investigator Assessment Based on GOG-RECIST Criteria (time frame: GOG-RECIST assessment obtained on cycle2, 4 and 6 Day 21for patients treated with 48 mg/m2 SNS-595 and Day 28 for patients treated with 60 mg/m2, through 28 (±14) days afte the last treatment at the end of safety follow up period) — Response rate was calculated per investigator's tumor assessment based on GOG-RECIST, which includes radiographic imaging, physical examination results, and CA-125 levels. No independent review of CT scans (lesion assessments) was performed. CR: disappearance of all target and nontarget lesions and no evidence of new lesions documented by two disease assessments at least 4 weeks apart. Normalization of CA125, if elevated at baseline, is required for ovarian carcinoma studies. PR is \>= 30% decrease in the sum of LD of all target measurable lesions taking as reference the baseline sum of LD. There can be no unequivocal progression of nontarget lesions and no new lesions. Documentation by two disease assessments at least 4 weeks apart is required. In the case where the ONLY target lesion is a solitary pelvic mass measured by physical exam, which is not radiographically measurable, a 50% decrease in the LD is required.",True,"[Overall Response Rate (CR+PR) Per Investigator Assessment Based on GOG-RECIST Criteria] COUNT_OF_PARTICIPANTS Participants
+   48 mg/m2: 7; 60 mg/m2: 4; 75 mg/m2: 3; Total: 14",,"Inclusion Criteria:
+
+* Histologically or cytologically documented epithelial ovarian cancer, primary peritoneal carcinoma, or fallopian tube cancer
+* Completed at least one Platinum Based Therapy (PBT) regimen (carboplatin, cisplatin, or another organoplatinum compound).
+* Evidence of platinum-resistant disease, relapse/progression within 6 months of the completion of PBT, or intolerant to PBT (inability to receive PBT due to hypersensitivity reactions to platinum)
+* Patients with primary platinum-resistant disease are allowed to receive no more than one nonplatinum cytotoxic regimen and no more than one noncytotoxic regimen for the management of recurrent or persistent disease after the development of primary platinum-resistance.
+* Measurable disease per GOG-RECIST criteria
+* GOG Performance Status of 0 or 1",https://clinicaltrials.gov/study/NCT00408603,https://clinicaltrials.gov/study/NCT00408603?tab=history,0
+NCT02551432,Confirm PMID 31494530 is this trial.,0,ctgov_results + protocol SAP,"Protocol: H0 ORR 25% vs H1 50%, one-sided alpha 0.05. Confirmed ORR 23.1% (6/26; 95% CI 6.9–39.3); exact one-sided p=0.66 vs H0.",2020-02-10,high,,Below the null rate. Paper (likely PMID 31494530) calls activity 'moderate'.,Claude draft — Arabella to verify,2026-11-09,Phase II Study of Pembrolizumab and Paclitaxel in Refractory Small Cell Lung Cancer,PHASE2,COMPLETED,,2015-09,2017-12,2020-02-10,Small Cell Lung Cancer,,Paclitaxel pembrolizumab [EXPERIMENTAL],1,"pembrolizumab, paclitaxel [DRUG] (aka keytruda, taxol) -> Paclitaxel pembrolizumab",Objective Response Rate (time frame: 3 months) — Tumor response will be assessed based on modified RECIST 1.1,True,"[Objective Response Rate] COUNT_OF_PARTICIPANTS Participants
+   Paclitaxel Pembrolizumab: 6",,"Inclusion Criteria:
+
+1. Be willing and able to provide written informed consent/assent for the trial.
+2. Be 20 years of age on day of signing informed consent.
+3. Have measurable lesions based on RECIST 1.1.
+4. Have provided tissue from an archival tissue sample obtained after the last previous treatment or newly obtained core or excisional biopsy of a tumor lesion.
+5. Have a performance status of 0 or 1 on the ECOG Performance Scale.
+6. Demonstrate adequate organ function as defined below 'adequate organ fuction laboratory values', all screening labs should be performed within 10 days of treatment initiation.
+
+   'adequate organ fuction laboratory values' System Laboratory Value Hematological Absolute neutrophil count (ANC) ≥ 1,500 /mcL Platelets ≥100,000 / mcL Hemoglobin ≥ 9 g/dL or ≥ 5.6 mmol/L Renal Serum creatinine OR Measured or calculateda creatinine clearance (GFR can also be used in place of creatinine or CrCl)≤1.5 X upper limit of normal (ULN) OR ≥ 60 mL/min for subject with creatinine levels \>1.5 X institutional ULN Hepatic Serum total bilirubin≤ 1.5 X ULN OR Direct bilirubin ≤ ULN for subjects with total bilirubin levels \> 1.5 ULN AST (SGOT) and ALT (SGPT) ≤ 2.5 X ULN OR
+   * 5 X ULN for subjects with liver metastases Coagulation International Normalized Ratio (INR) or Prothrombin Time (PT)
+   * 1.5 X ULN unless subject is receiving anticoagulant therapy as long as PT or PTT is within therapeutic range of intended use of anticoagulants Activated Partial Thromboplastin Time (aPTT) ≤1.5 X ULN unless subject is receiving anticoagulant therapy as long as PT or PTT is within therapeutic range of intended use of anticoagulants aCreatinine clearance should be calculated per institutional standard.
+7. Female subject of childbearing potential should have a negative urine or serum pregnancy within 72 hours prior to receiving the first dose of study medication. If the urine test is positive or cannot be confirmed as negative, a serum pregnancy test will be required.
+8. Female subjects of childbearing potential should be willing to use 2 methods of birth control or be surgically sterile, or abstain from heterosexual activity for the course of the study through 120 days after the last dose of study medication (Reference Section 5.7.2). Subjects of childbearing potential are those who have not been surgically sterilized or have not been free from menses for \> 1 year.
+9. Male subjects should agree to use an adequate method of contraception starting with the first dose of study therapy through 120 days after the last dose of study therapy.",https://clinicaltrials.gov/study/NCT02551432,https://clinicaltrials.gov/study/NCT02551432?tab=history,0
+NCT02772588,Flag for adjudication with Tianze; consider U.,0,ctgov_results,Hypothesis: 3-yr biochemical recurrence 25% → 10%. Final posted: 12/64 (18.8%) biochemical failure at 36 mo; exact one-sided p=0.16 vs 25%.,2026-04-13,low,,CONFLICT: ASCO 2021 interim reported 3-yr bRFS 89.7% (~10% BCR). Final posted result misses the 10% target and is not significant vs 25%.,Claude draft — Arabella to verify,2026-11-09,"ARN-509+Abiraterone Acetate+Leuprolide With Stereotactic, Ultra-Hypofractionated Radiation (AASUR) in Very High Risk Prostate Cancer: A Single Arm, Phase II Study",PHASE2,COMPLETED,,2016-05-12,2026-01-22,2026-04-13,Prostate Cancer,,patients with prostate cancer [EXPERIMENTAL],1,"ARN-509 [DRUG] (aka apalutamide, JNJ-56021927) -> patients with prostate cancer
+Abiraterone [DRUG] -> patients with prostate cancer
+Leuprolide [DRUG] -> patients with prostate cancer
+stereotactic, ultra-fractionated radiotherapy [RADIATION] -> patients with prostate cancer",Number of Participants With Biochemical Failure (time frame: 36 months) — Biochemical failure is defined as an increase in PSA by more than 2ng/mL above the nadir value. PSA rise equals or exceeds 2ng/mL will be the date of failure.,True,"[Number of Participants With Biochemical Failure] COUNT_OF_PARTICIPANTS Participants
+   Participants with increase in PSA by more than 2ng/mL above the nadir value: Patients With Prostate Cancer: 12
+   Participants without increase in PSA by more than 2ng/mL above the nadir value: Patients With Prostate Cancer: 52",,"Inclusion Criteria:
+
+* Histological or cytologic evidence of adenocarcinoma of the prostate confirmed at local institution.
+* At least one of the following:
+* Two or more high risk features OR
+* Gleason score 8-10
+* PSA ≥20 ng/mL within two months prior to registration
+* Clinical Stage ≥T3 disease, as determined by standard digital rectal examination (DRE)
+* Radiographic stage ≥T3 disease as determined by a ≥75% probability of extracapsular extension or seminal vesicle invasion per reading radiologist
+* Any Gleason 9 or 10 disease OR \>4 cores of Gleason 8 disease
+* KPS ≥ 70%
+* IPSS (International Prostate Symptom Score) ≤ 20F
+* Patient must be available for follow-up
+* Laboratory test findings within 28 days of study registration :
+* Adequate hepatic function:
+* Bilirubin ≤ 1.5 times the upper institutional limits of normal (ULN). Patients with a history of Gilbert's syndrome may be enrolled if the total bilirubin is \< 3 mg/dL with a predominance of indirect bilirubin. If the total bilirubin is \>1.5 x the institutional ULN, direct and indirect bilirubin will be measured and if direct bilirubin is ≤ 1.5 x the institutional ULN, the patient will be eligible to participate
+* SGPT (ALT) and SGOT (AST) ≤ 2.5 x ULN
+* Adequate renal function with creatinine \<2.0 x the institutional ULN
+* Adequate hematologic function:
+* Absolute neutrophil counts ≥ 1500 cell/mm3
+* Platelets ≥ 100,000 cells/mm3 (independent of blood transfusion and/or growth factors within 3 months prior to registration)
+* Hemoglobin value ≥9 g/dL at the Screening Visit (independent of blood transfusion and/or growth factors within 3 months prior to registration)
+* Albumin ≥ 3.0 g/dL
+* Potassium ≥ 3.5 mmol/L
+* Patients with pelvic and/or retroperitoneal lymph nodes \< 1.5 cm in short axis are eligible as they are not considered to have definitive metastases
+* Willing and able to provide written informed consent and HIPAA authorization for the release of personal health information NOTE: HIPAA authorization may be either included in the informed consent or obtained separately
+* Males 18 years of age and above
+* The effects of apalutamide, abiraterone, leuprolide and stereotactic, ultra-hypofractionated radiation on the developing human fetus at the recommended therapeutic dose are unknown. Men (including men with vasectomies) must agree to use adequate contraception (a condom and another effective method of birth control) prior to registration, for the duration of study participation, and for at least 3 months thereafter. Men must also agree not to donate sperm for the duration of study participation, and for at least 3 months thereafter.",https://clinicaltrials.gov/study/NCT02772588,https://clinicaltrials.gov/study/NCT02772588?tab=history,0
+NCT03878472,,U,publication:36596787,"Paper: 'There is no prespecific endpoint or criteria for sample size'; exploratory. pCR 15.8% (3/19), MPR 26.3% (5/19).",2023,high,No pre-specified success criterion exists.,Registered primary (pathological remission rate) vs paper ('pathological responses') wording differs.,Claude draft — Arabella to verify,2026-11-09,A Phase II Clinical Study of Neoadjuvant Therapy for Resectable Locally Advanced Gastric Cancer with PD-1 Antibody or in Combination with Apatinib ± S1±Oxaliplatin,PHASE2,COMPLETED,,2019-04-01,2022-06-01,,Gastric Cancer,NON_RANDOMIZED,"Neoadjuvant immunotherapy with PD-1 [EXPERIMENTAL]
+Neoadjuvant immunotherapy with PD-1+apatinib [EXPERIMENTAL]
+Neoadjuvant immunotherapy with PD-1+apatinib+S1 [EXPERIMENTAL]
+Neoadjuvant immunotherapy with PD-1+apatinib+S1+Oxaliplatin [EXPERIMENTAL]",4,"SHR1210 [DRUG] -> Neoadjuvant immunotherapy with PD-1, Neoadjuvant immunotherapy with PD-1+apatinib, Neoadjuvant immunotherapy with PD-1+apatinib+S1, Neoadjuvant immunotherapy with PD-1+apatinib+S1+Oxaliplatin
+Apatinib [DRUG] -> Neoadjuvant immunotherapy with PD-1+apatinib, Neoadjuvant immunotherapy with PD-1+apatinib+S1, Neoadjuvant immunotherapy with PD-1+apatinib+S1+Oxaliplatin
+S1 [DRUG] -> Neoadjuvant immunotherapy with PD-1+apatinib+S1, Neoadjuvant immunotherapy with PD-1+apatinib+S1+Oxaliplatin
+Oxaliplatin [DRUG] -> Neoadjuvant immunotherapy with PD-1+apatinib+S1+Oxaliplatin","Pathological remission rate (PRR) rate of PD-1 antibody monotherapy or in combination with anti-angiogenesis VEGFR2-TKI apatinib ± S1 ± Oxaliplatin in neoadjuvant (preoperative) treatment of resectable locally advanced gastric cancer. (time frame: 5 months after the last subject participating in) — The pathological response was calculated according to the proportion of residual viable tumor cells in the tumor bed. Complete pathological response (CPR) was defined as no residue tumor cells. Major pathological response (MPR) was defined as less than 10% residue tumor cells.
+Immunotherapy-related biomarkers (time frame: 5 months after the last subject participating in) — To evaluate the relationship between tumor pathological remission and immunotherapy related biomarkers, including tumor genome, tumor microenvironment and host immune system response biomarkers.",False,,,"Inclusion Criteria:
+
+1. Aged 18-70 years old, both genders, histologically documented gastric cancer.
+2. Newly diagnosed locally advanced, potentially resectable disease without any prior antitumor treatment
+3. clinically diagnosed stage T3-4bN+M0 according to ultrasound endoscopy or enhanced CT/MRI scan.
+4. Eligible and reasonably suitable for potentially curative resection
+5. Written (signed) informed consent.
+6. Pathological tissue available
+7. ECOG: 0-1.
+8. Adequate organ function.
+9. Willingness to provide blood and tissue samples for research purposes.
+10. Good compliance with the study procedures, including lab and auxiliary examination and treatment.
+11. Female patients should not be pregnant or breast feeding.
+12. Agree to take contraception measures during treatment and in 120 days after last dose of SHR-1210.
+13. Life expectancy of at least 6 months.",https://clinicaltrials.gov/study/NCT03878472,https://clinicaltrials.gov/study/NCT03878472?tab=history,1
+NCT01108341,Read PMID 25630297 statistical section; then set 1 or 0.,U,publication:25630297,ORR 90% (95% CI 77.8–96.6). Study asked whether ORR was 'similar' to historical BR (≥90%).,2015,low,Success rule (non-inferiority margin / lower bound) not accessible.,"Point estimate = 90%, CI lower bound below it; label depends on the rule.",Claude draft — Arabella to verify,2026-11-09,An Open-Label Study to Evaluate the Efficacy and Safety of Treatment With Bendamustine in Combination With Ofatumumab in Previously Untreated Patients With Indolent B-Cell Non-Hodgkin's Lymphoma (NHL),PHASE2,COMPLETED,,2010-05,2011-07,2012-08-28,Non-Hodgkin's Lymphoma (NHL),,Bendamustine and Ofatumumab [EXPERIMENTAL],1,"Bendamustine hydrochloride [DRUG] (aka CEP-18083, Treanda) -> Bendamustine and Ofatumumab
+Ofatumumab [DRUG] (aka Arzerra) -> Bendamustine and Ofatumumab","Percentage of Participants With a Best Overall Response of Complete Response (CR) or Partial Response (PR), as Determined by the International Working Group (IWG) Criteria As Assessed by Investigators (time frame: up to Week 32) — The IWG criteria (Cheson et al 2007) for a CR is a complete disappearance of all detectable clinical evidence of disease and disease-related symptoms if present before therapy. A PR is at least a 50% decrease in sum of the product of the diameters (SPD) of up to 6 of the largest dominant nodes or nodal masses, no increase should be observed in the size of other nodes, liver or spleen, and no new sites of disease should be observed.",True,"[Percentage of Participants With a Best Overall Response of Complete Response (CR) or Partial Response (PR), as Determined by the International Working Group (IWG) Criteria As Assessed by Investigators] NUMBER percentage of participants
+   Bendamustine and Ofatumumab: 90 (77.8–96.6)",,"Key Inclusion Criteria:
+
+* The patient has histopathologic confirmation of one of the protocol-specific CD20+ B-cell non-Hodgkin's lymphomas. Tissue diagnostic procedures must be performed within 6 months of study entry and with biopsy material available for review.
+* The patient meets 1 of the following need-for-treatment criteria:
+
+  1. Presence of at least 1 of the following B-symptoms:
+
+     * fever (\>38ºC) of unclear etiology
+     * night sweats
+     * weight loss of greater than 10% within the prior 6 months
+  2. large tumor mass (bulky disease) characterized by lymphomas with a diameter of more than 3 cm in 3 or more regions or by a lymphoma with a diameter of more than 7 cm in 1 region
+  3. presence of lymphoma-related complications
+  4. hyperviscosity syndrome due to monoclonal gammopathy
+* The patient's tumor is verified to be CD20+ positive from current or previous excisional or incisional tissue diagnostic procedures performed within 6 months of study entry.
+* The screening phase CT scan (based on local evaluation) shows:
+* 2 or more clearly demarcated lesions with a largest diameter ≥1.5 cm, or
+* 1 clearly demarcated lesion with a largest diameter ≥2.0 cm
+* The patient was not previously treated for indolent lymphoma (with the exception of a single course of local radiation therapy not exceeding 2 adjacent lymph node regions).
+* The patient has adequate hematologic and hepatic function.
+* The patient has Eastern Cooperative Oncology Group (ECOG) performance status 0, 1, or 2.
+* The patient has serum creatinine of 2.0 mg/dL or less or creatinine clearance of 30 mL/min or more, based on the Cockcroft-Gault method, or from a 24-hour urine collection.
+* The patient is willing to comply with contraception requirements.
+
+Key",https://clinicaltrials.gov/study/NCT01108341,https://clinicaltrials.gov/study/NCT01108341?tab=history,1
+NCT02006667,Agree exclusion.,EXCLUDE,,,,,"Start 2001, before v9 TRAIN_START_YEAR (2005); pilot with no threshold.",,Claude draft — Arabella to verify,2026-11-09,"An Open-label Pilot Study Evaluating the Effect of a Combination Regimen of Herceptin, Cisplatin, and Gemcitabine on Time to Disease Progression in Patients With Metastatic Urothelial Cancer",PHASE2,COMPLETED,,2001-01,2010-01,2015-02-11,Urinary Tract Cancer,NON_RANDOMIZED,"Trastuzumab, Gemcitabine, Cisplatin [EXPERIMENTAL]",1,"trastuzumab [DRUG] (aka Herceptin) -> Trastuzumab, Gemcitabine, Cisplatin
+gemcitabine [DRUG] -> Trastuzumab, Gemcitabine, Cisplatin
+cisplatin [DRUG] -> Trastuzumab, Gemcitabine, Cisplatin","Progression-Free Survival (PFS) - Percentage of Participants With an Event (time frame: Screening, Day 1 of Cycles 1 through 6, every 4 weeks until end of treatment, up to 33 months) — PFS was defined as the time from the first dose of study treatment to the first documentation of objective tumor progression or death due to any cause.
+Progression-Free Survival - Time to Event (time frame: Screening, Day 1 of Cycles 1 through 6, every 4 weeks until end of treatment, up to 33 months) — The median time, in months, from the first dose of study treatment to PFS event.
+Percentage of Participants Who Were Progression Free at 12 and 24 Months (time frame: Screening, and Months 12 and 24)",True,"[Progression-Free Survival (PFS) - Percentage of Participants With an Event] NUMBER percentage of participants
+   Trastuzumab/Gemcitabine/Cisplatin: 92.3
+[Progression-Free Survival - Time to Event] MEDIAN months
+   Trastuzumab/Gemcitabine/Cisplatin: 11.0 (5.7–14.3)
+[Percentage of Participants Who Were Progression Free at 12 and 24 Months] NUMBER percentage of participants
+   12 Months: Trastuzumab/Gemcitabine/Cisplatin: 38.5 (14.1–62.8)
+   24 Months: Trastuzumab/Gemcitabine/Cisplatin: 15.4 (2.5–38.8)",,"Inclusion Criteria:
+
+* adult patients with \>=18 years of age;
+* metastatic urothelial carcinoma;
+* measurable metastases or local recurrent disease;
+* no prior chemotherapy for metastatic disease;
+* HER2 overexpression (IHC \[2+\] or \[3+\]).",https://clinicaltrials.gov/study/NCT02006667,https://clinicaltrials.gov/study/NCT02006667?tab=history,0
+NCT02826486,Check full text for a target ORR per cohort.,U,publication:32451495,"Primary ORR. Cohort 1 (BL-8040+pembro): DCR 34.5%, 1 PR (mITT N=29). Cohort 2 (+chemo, N=22): ORR 32%, DCR 77%. No pre-specified target in abstract.",2020,medium,No pre-specified threshold found.,Authors call for randomised confirmation.,Claude draft — Arabella to verify,2026-11-09,"A Phase IIa, Multicenter, Open-label Study to Assess the Safety and Efficacy of the Combination of BL-8040 and Pembrolizumab in Patients With Metastatic Pancreatic Cancer, the COMBAT Study (KEYNOTE-202)",PHASE2,COMPLETED,,2016-09,2022-09-06,2024-08-28,Metastatic Pancreatic Adenocarcinoma,NON_RANDOMIZED,"Cohort 1: BL-8040 + Pembrolizumab (Keytruda®) [EXPERIMENTAL]
+BL-8040 + Pembrolizumab + Chemotherapy [EXPERIMENTAL]",2,"BL-8040 [DRUG] -> BL-8040 + Pembrolizumab + Chemotherapy, Cohort 1: BL-8040 + Pembrolizumab (Keytruda®)
+Pembrolizumab [DRUG] (aka Keytruda) -> BL-8040 + Pembrolizumab + Chemotherapy, Cohort 1: BL-8040 + Pembrolizumab (Keytruda®)
+Chemotherapy [DRUG] (aka Onivyde / Leucovorin (LV) / Fluorouracil (5-FU)) -> BL-8040 + Pembrolizumab + Chemotherapy","Objective Response Rate (ORR) Assessed by Imaging According to RECIST 1.1 Criteria (time frame: Change in response between screening, end of monotherapy (Day 5), end of cycle 2 (Day 28) and approximately every 63 days until the date of first documented progression or date of death from any cause, whichever came first, assessed up to 24 months.) — Response is determined by assessment of target lesions identified in CT or MRI imaging.
+
+The ORR is assessed according to RECIST 1.1, defined as the sum of PRs (Partial Responses) and CRs (Complete Responses) determined according to best response RECIST 1.1 criteria.
+
+PR is defined as at least a 30% decrease in the sum of the longest diameter of target lesions, taking as reference the baseline sum longest diameter.
+
+CR is defined as disappearance of all target lesions.",True,"[Objective Response Rate (ORR) Assessed by Imaging According to RECIST 1.1 Criteria] COUNT_OF_PARTICIPANTS Participants
+   Cohort 1: BL-8040 + Pembrolizumab: 1; Cohort 2: BL-8040 + Pembrolizumab + Chemotherapy: 8",,"Inclusion Criteria:
+
+1. 18 years and older.
+2. Patients must sign a written informed consent prior to entering the study.
+3. Histologically confirmed (either previously or newly biopsied) metastatic unresectable pancreatic adenocarcinoma, including with intraductal papillary mucinous neoplasm.
+4. Have measurable disease (≥ 1 measurable lesion) based on Response Evaluation Criteria In Solid Tumors (RECIST) v1.1 as determined by the site study team. Tumor lesions situated in a previously irradiated area are considered measurable if progression has been demonstrated in such lesions.
+5. Previous treatment lines
+
+   1. Cohort 1: Have documented objective radiographic progression after stopping treatment with first-line or further therapy, i.e. chemotherapy and or radiotherapy. Surgery not followed with neoadjuvant therapy will not be considered as first-line therapy.
+   2. Cohort 2: Have documented objective radiographic progression after stopping treatment with first-line, gemcitabine-based chemotherapy. Only primary metastatic patients will be allowed to participate. Patients with previous surgery for their pancreatic cancer will not be allowed to participate.
+6. Willing to submit an evaluable tumor tissue sample, preferably from a liver metastasis, unless tumor is considered inaccessible or biopsy is otherwise considered not in the subject's best interest
+7. Complete resolution of toxic effect(s) of the most recent prior chemotherapy to Grade 1 or less (except alopecia). If the subject received major surgery or radiation therapy of \> 30 Gy, they must have recovered from the toxicity and/or complications from the intervention.
+8. Eastern Cooperative Oncology Group (ECOG) status ≤1.
+9. Life expectancy of at least 3 months.
+10. Adequate organ function at Baseline as defined below. All laboratory assessments should be performed within 10 days of treatment initiation
+
+    1. Hematological:
+
+       * White blood cell (WBC) ≥ 2,500/mm\^3
+       * Absolute neutrophil count
+
+         * Cohort 1: ≥ 1000 /mm\^3
+         * Cohort 2: ≥ 1500 /mm\^3
+       * Platelet count ≥ 100,000/mm\^3
+       * Hemoglobin ≥9 g/dL or ≥5.6 mmol/L
+       * Hematocrit ≥30%
+    2. Renal function:
+
+       • Creatinine ≤1.5 x Upper limit of normal (ULN) OR measured or calculated creatinine clearance (glomerular filtration rate (GFR)) can also be used in place of creatinine or (CrCl) \> 60 mL/min for subject with creatinine levels \>1.5 x institutional ULN
+    3. Hepatic function:
+
+       * Total Bilirubin: within institutional normal ranges
+       * Aspartate Aminotransferase/Serum Glutamic Oxaloacetic Transaminase (AST/SGOT) and Alanine Transaminase/Serum Glutamic Pyruvic Transaminase (ALT/SGPT): ≤2.5 x ULN OR ≤5 x ULN for subjects with liver metastases
+    4. Coagulation:
+
+       * International Normalized Ratio (INR) or PT: ≤1.5 x ULN unless subject is receiving anticoagulant therapy as long as PT or PTT is within therapeutic range of intended use of anticoagulants
+       * Activated Partial Thromboplastin Time (aPTT): ≤1.5 x ULN unless subject is receiving anticoagulant therapy as long as PT or PTT is within therapeutic range of intended use of anticoagulants
+11. Subjects must use effective contraception:
+
+    1. Female subjects must be of non-childbearing potential or, if of childbearing potential, must have a negative urine or serum pregnancy test within 72 hours prior to taking study medication. If the urine test is positive or cannot be confirmed as negative, a serum pregnancy test will be required. The serum pregnancy test must be negative for the subject to be eligible. Non-childbearing potential is defined as (by other than medical reasons):
+
+       * ≥45 years of age and has not had menses for over 2 years
+       * Amenorrhoeic for \> 2 years without a hysterectomy and oophorectomy and a Follicle Stimulating Hormone (FSH) value in the postmenopausal range upon pretrial (Screening) evaluation
+       * Post hysterectomy, bilateral oophorectomy, bilateral salpingectomy or bilateral tubal ligation at least 6 weeks prior to Screening. Documented hysterectomy or oophorectomy must be confirmed with medical records of the actual procedure or confirmed by ultrasound. Tubal ligation must be confirmed with medical records of the actual procedure otherwise the subject must be willing to use two adequate barrier methods throughout the study, starting with the Screening visit through 120 days after the last dose of study therapy. Information must be captured appropriately within the site's source documents
+    2. Male subjects must agree to use an adequate method of contraception starting with the first dose of study therapy through 120 days after the last dose of study therapy.",https://clinicaltrials.gov/study/NCT02826486,https://clinicaltrials.gov/study/NCT02826486?tab=history,3
