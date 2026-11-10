@@ -22,6 +22,10 @@ Commands (run from the project folder):
      python curation_tools.py quality
        -> curation/feature_quality_table.csv
 
+  5. Case-study notes for Week 3 (from trials already in the review workbook)
+     python curation_tools.py cases --ids NCT00866047,NCT02551432,NCT03878472
+       -> curation/cases/<NCT>.md  (pre-filled; complete the TODO sections)
+
   4. Gold labels from completed reviews (one or two reviewers)
      python curation_tools.py gold --review curation/outcome_review.xlsx
      python curation_tools.py gold --review curation/outcome_review.xlsx --review2 curation/outcome_review_tianze.xlsx
@@ -255,7 +259,69 @@ def summarise_study(s: dict) -> dict:
         "inclusion_criteria": _inclusion(em.get("eligibilityCriteria", "") or "").strip(),
         "ctgov_url": f"https://clinicaltrials.gov/study/{nct}",
         "history_url": f"https://clinicaltrials.gov/study/{nct}?tab=history",
+        "scope_flag": scope_flag(dm.get("phases", []) or [], st.get("overallStatus", ""),
+                                 _date(st.get("startDateStruct")), om.get("primaryOutcomes", []) or []),
+        "threshold_hints": threshold_hints(
+            " ".join([(ps.get("descriptionModule") or {}).get("detailedDescription", "") or "",
+                      (ps.get("descriptionModule") or {}).get("briefSummary", "") or ""]
+                     + [o.get("description", "") or "" for o in om.get("primaryOutcomes", []) or []]
+                     + [a.get("statisticalComment", "") or "" for m in oms for a in m.get("analyses", []) or []])),
+        "protocol_sap_docs": doc_links(nct, s),
     }
+
+
+# ── Scope, threshold hints, documents ───────────────────────────────────────
+# Mirrors v9 config: PHASES = PHASE2/PHASE3, EXCLUDE_PHASE1_2, TRAIN_START_YEAR = 2005.
+# Keep in sync with config.py if Tianze changes the scope.
+MIN_START_YEAR = 2005
+_SAFETY_RE = re.compile(r"adverse event|toxicit|safety|tolerab|maximum tolerated|\bmtd\b|dose[\s-]*limiting|"
+                        r"\bdlt\b|pharmacokinetic|recommended phase (?:2|ii) dose|\brp2d\b", re.I)
+_EFFICACY_RE = re.compile(r"respon|remission|surviv|progression|\bpfs\b|\bos\b|\borr\b|recurrence|relapse|"
+                          r"\bpcr\b|pathologic|disease control|time to|event[\s-]free|biochemical|failure", re.I)
+_THRESH_RE = re.compile(r"null hypothes|alternative hypothes|\bh[01]\s*[:=]|simon|two[\s-]*stage|historical|"
+                        r"power|alpha|type i error|target|promising|uninteresting|"
+                        r"\d+(?:\.\d+)?\s*%\s*(?:to|vs\.?|versus)\s*\d+(?:\.\d+)?\s*%|"
+                        r"(?:at least|≥|>=)\s*\d+\s*(?:of|/)\s*\d+\s*(?:patients|responses|responders)", re.I)
+
+
+def scope_flag(phases: list[str], status: str, start: str, primary_outcomes: list[dict]) -> str:
+    """Why a trial is outside the v9 label_primary scope; '' if in scope."""
+    reasons = []
+    if "PHASE1" in phases:
+        reasons.append("Phase 1/2 (excluded in v9)")
+    if phases and not any(p in ("PHASE2", "PHASE3") for p in phases):
+        reasons.append(f"phase {', '.join(phases)}")
+    if status == "WITHDRAWN":
+        reasons.append("withdrawn (never enrolled)")
+    year = int(start[:4]) if start[:4].isdigit() else None
+    if year is not None and year < MIN_START_YEAR:
+        reasons.append(f"start {year} < {MIN_START_YEAR}")
+    text = " ".join(f"{o.get('measure', '')} {o.get('description', '')}" for o in primary_outcomes)
+    measures = " ".join(o.get("measure", "") for o in primary_outcomes)
+    if primary_outcomes and _SAFETY_RE.search(measures) and not _EFFICACY_RE.search(measures):
+        reasons.append("primary endpoint is safety/dose-finding only")
+    elif not text.strip():
+        reasons.append("no primary outcome registered")
+    return "EXCLUDE? " + "; ".join(reasons) if reasons else ""
+
+
+def threshold_hints(text: str, k: int = 4) -> str:
+    """Sentences that may state the pre-specified success threshold. Hints only: verify in the source."""
+    sents = re.split(r"(?<=[.;])\s+|\n+", text or "")
+    hits = [s.strip() for s in sents if _THRESH_RE.search(s) and len(s.strip()) > 15]
+    return "\n".join(dict.fromkeys(h[:400] for h in hits[:k]))
+
+
+def doc_links(nct: str, s: dict) -> str:
+    """Links to protocol / SAP PDFs posted on CT.gov — often where the null/target rate is stated."""
+    docs = (((s.get("documentSection") or {}).get("largeDocumentModule") or {}).get("largeDocs") or [])
+    out = []
+    for d in docs:
+        kind = "+".join(k for k, f in (("protocol", "hasProtocol"), ("SAP", "hasSap"), ("ICF", "hasIcf"))
+                        if d.get(f)) or d.get("typeAbbrev", "doc")
+        if d.get("filename"):
+            out.append(f"{kind}: https://cdn.clinicaltrials.gov/large-docs/{nct[-2:]}/{nct}/{d['filename']}")
+    return "\n".join(out)
 
 
 # ── Excel helpers ────────────────────────────────────────────────────────────
@@ -331,8 +397,14 @@ def cmd_review(args) -> None:
     for c in REVIEW_COLS:
         new[c] = ""
     rev = pd.concat([old_rev, new], ignore_index=True) if old_rev is not None else new
-    lead = ["nct_id"] + REVIEW_COLS
+    lead = ["nct_id", "scope_flag"] + REVIEW_COLS + ["threshold_hints", "protocol_sap_docs"]
+    for c in lead:
+        if c not in rev.columns:
+            rev[c] = ""
     rev = rev[lead + [c for c in rev.columns if c not in lead]]
+    n_flag = (rev["scope_flag"].fillna("") != "").sum()
+    if n_flag:
+        print(f"  {n_flag} trial(s) flagged as possibly out of scope (see scope_flag). Confirm and replace them.")
     pub = pd.DataFrame(pubs)
     if old_pub is not None and len(old_pub):
         pub = pd.concat([old_pub, pub], ignore_index=True)
@@ -489,6 +561,68 @@ def cmd_gold(args) -> None:
     print(f"Wrote {out} ({len(gold)} labels). After adjudication, copy to <MPE_OUTPUT>/data/gold_labels.csv.")
 
 
+# ── 5. Case-study notes (Week 3) ─────────────────────────────────────────────
+CASE_TEMPLATE = """# Case: {nct_id}
+
+**Title:** {title}
+**Phase / design:** {phase} · {allocation} · {n_arms_record} arm(s) · start {start_date} · status {status}
+**Record:** {ctgov_url}  ·  history: {history_url}
+
+## 1. Trial and biology
+- Cancer type: {conditions}
+- Investigational agent(s):
+{interventions_md}
+- Target / mechanism: _TODO: target gene(s), mechanism class, modality_
+- Biomarker-defined enrollment: _TODO: yes/no — quote the inclusion line_
+
+## 2. Outcome (checked against source)
+- Primary endpoint: {primary_outcomes}
+- Pre-specified threshold: _TODO: quote it, or state that none exists_
+- Label: **{outcome_label}** ({confidence} confidence) — source: {evidence_source} ({evidence_date})
+- Evidence: "{evidence_text}"
+- Uncertainty: {reason_if_unknown}
+
+## 3. What the biology features say
+_TODO after Tianze shares feature values: 3–4 feature values for this trial, compared with the cohort median.
+Describe what each measures (see week2_biology_notes.md §1) — not what it "causes"._
+
+## 4. Why this case is informative
+_TODO: e.g. strong biology but failed; weak biology but succeeded; uncertain label._
+
+## 5. Alternative explanations
+- Trial design (dose, comparator, endpoint choice, sample size): _TODO_
+- Patient selection / biomarker: _TODO_
+- Missingness or mapping errors in the features: _TODO_
+- Disease or drug-class effect rather than target biology: _TODO_
+
+## 6. Notes
+{notes}
+"""
+
+
+def cmd_cases(args) -> None:
+    rev = pd.read_excel(args.review, sheet_name="review", dtype=str).fillna("")
+    ids = _read_ids(args.ids, None)
+    missing = [i for i in ids if i not in set(rev["nct_id"])]
+    if missing:
+        sys.exit(f"Not in {args.review}: {', '.join(missing)} — run `review` for them first.")
+    out_dir = OUT_DIR / "cases"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    for _, r in rev[rev["nct_id"].isin(ids)].iterrows():
+        d = {k: (v or "—") for k, v in r.to_dict().items()}
+        d["interventions_md"] = "\n".join(f"  - {ln}" for ln in str(r.get("interventions", "")).splitlines()) or "  - —"
+        for k in ("title", "phase", "allocation", "n_arms_record", "start_date", "status", "conditions",
+                  "primary_outcomes", "ctgov_url", "history_url", "outcome_label", "confidence", "evidence_source",
+                  "evidence_date", "evidence_text", "reason_if_unknown", "notes"):
+            d.setdefault(k, "—")
+        path = out_dir / f"{r['nct_id']}.md"
+        if path.exists() and not args.overwrite:
+            print(f"  skip {path} (exists; use --overwrite)")
+            continue
+        path.write_text(CASE_TEMPLATE.format(**d))
+        print(f"Wrote {path}")
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -507,10 +641,16 @@ def main() -> None:
     g = sub.add_parser("gold", help="Export candidate gold labels (+ kappa if two reviewers)")
     g.add_argument("--review", default=str(OUT_DIR / "outcome_review.xlsx"))
     g.add_argument("--review2")
+    c = sub.add_parser("cases", help="Write Week 3 case-study notes from reviewed trials")
+    c.add_argument("--ids", required=True)
+    c.add_argument("--review", default=str(OUT_DIR / "outcome_review.xlsx"))
+    c.add_argument("--overwrite", action="store_true")
     args = p.parse_args()
     OUT_DIR.mkdir(exist_ok=True)
-    {"review": cmd_review, "spotcheck": cmd_spotcheck, "quality": cmd_quality, "gold": cmd_gold}[args.cmd](args)
+    {"review": cmd_review, "spotcheck": cmd_spotcheck, "quality": cmd_quality, "gold": cmd_gold,
+     "cases": cmd_cases}[args.cmd](args)
 
 
 if __name__ == "__main__":
     main()
+    
