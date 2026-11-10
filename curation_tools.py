@@ -22,6 +22,9 @@ Commands (run from the project folder):
      python curation_tools.py quality
        -> curation/feature_quality_table.csv
 
+  6. Merge drafted labels (e.g. from Claude or a co-reviewer) into blank cells only
+     python curation_tools.py merge --drafts curation/drafts_batch2.csv
+
   5. Case-study notes for Week 3 (from trials already in the review workbook)
      python curation_tools.py cases --ids NCT00866047,NCT02551432,NCT03878472
        -> curation/cases/<NCT>.md  (pre-filled; complete the TODO sections)
@@ -561,6 +564,29 @@ def cmd_gold(args) -> None:
     print(f"Wrote {out} ({len(gold)} labels). After adjudication, copy to <MPE_OUTPUT>/data/gold_labels.csv.")
 
 
+# ── 6. Merge drafted labels into the workbook (fills blank cells only) ───────
+def cmd_merge(args) -> None:
+    wb = Path(args.review)
+    sheets = pd.read_excel(wb, sheet_name=None, dtype=str)
+    rev = sheets["review"].fillna("")
+    drafts = pd.read_csv(args.drafts, dtype=str).fillna("")
+    cols = [c for c in drafts.columns if c != "nct_id" and c in rev.columns]
+    missing = sorted(set(drafts["nct_id"]) - set(rev["nct_id"]))
+    if missing:
+        print(f"  ! not in workbook (run `review` for them first): {', '.join(missing)}")
+    filled = 0
+    for _, d in drafts.iterrows():
+        idx = rev.index[rev["nct_id"] == d["nct_id"]]
+        for c in cols:
+            for i in idx:
+                if not str(rev.at[i, c]).strip() and d[c]:
+                    rev.at[i, c] = d[c]
+                    filled += 1
+    sheets["review"] = rev
+    _write_xlsx(wb, {k: v.fillna("") for k, v in sheets.items()}, {"review": REVIEW_COLS})
+    print(f"Filled {filled} blank cells in {wb}. Existing entries were not changed.")
+
+
 # ── 5. Case-study notes (Week 3) ─────────────────────────────────────────────
 CASE_TEMPLATE = """# Case: {nct_id}
 
@@ -645,10 +671,13 @@ def main() -> None:
     c.add_argument("--ids", required=True)
     c.add_argument("--review", default=str(OUT_DIR / "outcome_review.xlsx"))
     c.add_argument("--overwrite", action="store_true")
+    m = sub.add_parser("merge", help="Fill blank review cells from a drafts CSV (never overwrites)")
+    m.add_argument("--drafts", required=True)
+    m.add_argument("--review", default=str(OUT_DIR / "outcome_review.xlsx"))
     args = p.parse_args()
     OUT_DIR.mkdir(exist_ok=True)
     {"review": cmd_review, "spotcheck": cmd_spotcheck, "quality": cmd_quality, "gold": cmd_gold,
-     "cases": cmd_cases}[args.cmd](args)
+     "cases": cmd_cases, "merge": cmd_merge}[args.cmd](args)
 
 
 if __name__ == "__main__":
